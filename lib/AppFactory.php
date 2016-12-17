@@ -7,6 +7,7 @@ class AppFactory
     public static function create($config)
     {
         // Prepare app
+        \Framework\App::$templatesPath = __DIR__ . '/../public/static/';
         $app = new \Framework\App;
         $app->config = $config;
 
@@ -17,6 +18,9 @@ class AppFactory
         $hasPermission = [$token, 'check'];
 
         // Define routes
+        $app->get('/library', function () use ($app) {
+            $app->render('index.php');
+        });
         $app->get('/welcome/', function () use ($app) {
             $app->render('test.php');
         });
@@ -26,25 +30,25 @@ class AppFactory
 
         // Define API routes
         $dashboard = new \Controller\Dashboard($app);
-        $app->get('/dashboard/', [$dashboard, 'index']);
-        $app->get('/dashboard/:id', [$dashboard, 'show']);
-        $app->post('/dashboard/', [$dashboard, 'create']);
-        $app->post('/dashboard/:id', [$dashboard, 'update']);
-        $app->delete('/dashboard/:id', [$dashboard, 'delete']);
+        $app->get('/api/dashboard/', [$dashboard, 'index']);
+        $app->get('/api/dashboard/:id', [$dashboard, 'show']);
+        $app->post('/api/dashboard/', [$dashboard, 'create']);
+        $app->post('/api/dashboard/:id', [$dashboard, 'update']);
+        $app->delete('/api/dashboard/:id', [$dashboard, 'delete']);
 
         $movie = new \Controller\Movie($app);
-        $app->get('/movies/', [$movie, 'index']);
-        $app->get('/movies/:id', [$movie, 'show']);
-        $app->post('/movies/', [$movie, 'create']);
-        $app->post('/movies/:id', [$movie, 'update']);
-        $app->delete('/movies/:id', [$movie, 'delete']);
+        $app->get('/api/movies/', [$movie, 'index']);
+        $app->get('/api/movies/:id', [$movie, 'show']);
+        $app->post('/api/movies/', [$movie, 'create']);
+        $app->post('/api/movies/:id', [$movie, 'update']);
+        $app->delete('/api/movies/:id', [$movie, 'delete']);
 
         $cast = new \Controller\Cast($app);
-        $app->get('/casts/', [$cast, 'index']);
-        $app->get('/casts/:id', [$cast, 'show']);
-        $app->post('/casts/', [$cast, 'create']);
-        $app->post('/casts/:id', [$cast, 'update']);
-        $app->delete('/casts/:id', [$cast, 'delete']);
+        $app->get('/api/casts/', [$cast, 'index']);
+        $app->get('/api/casts/:id', [$cast, 'show']);
+        $app->post('/api/casts/', [$cast, 'create']);
+        $app->post('/api/casts/:id', [$cast, 'update']);
+        $app->delete('/api/casts/:id', [$cast, 'delete']);
 
         return self::$instance = $app;
     }

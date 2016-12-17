@@ -159,10 +159,13 @@ class App
      */
     public function run()
     {
+        $method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'GET';
+        $pathInfo = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : 'GET';
+
         try {
             ob_start();
             $dispatched = false;
-            $matchedRoutes = $this->router->getMatchedRoutes($_SERVER['REQUEST_METHOD'], $_SERVER['PATH_INFO']);
+            $matchedRoutes = $this->router->getMatchedRoutes($method, $pathInfo);
             foreach ($matchedRoutes as $route) {
                 try {
                     $dispatched = $route->dispatch();

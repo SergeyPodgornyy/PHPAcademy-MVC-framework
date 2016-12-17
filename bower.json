@@ -1,0 +1,21 @@
+{
+  "name": "MVC-Framework",
+  "homepage": "https://github.com/SergeyPodgornyy/PHPAcademy-MVC-framework",
+  "authors": [
+    "Sergey Podgornyy <sergey.podgornyy@yahoo.de>"
+  ],
+  "description": "MVC Framework for PHP Academy",
+  "main": "main.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "*",
+    "jquery": "*"
+  }
+}
