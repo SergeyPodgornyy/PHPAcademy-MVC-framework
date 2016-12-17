@@ -1,0 +1,15 @@
+{
+    "name": "phpacademy/framework",
+    "description": "MVC framework",
+    "authors": [
+        {
+            "name": "Sergey Podgornyy",
+            "email": "sergey.podgornyy@yahoo.de"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "classmap": ["framework", "lib"],
+        "files": []
+    }
+}

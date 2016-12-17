@@ -1,0 +1,5 @@
+.idea/
+npm-debug.log
+/etc/app-conf.php
+/node_modules/
+/vendor/
