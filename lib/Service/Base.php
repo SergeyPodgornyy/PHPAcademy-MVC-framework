@@ -4,6 +4,8 @@ namespace Service;
 
 abstract class Base
 {
+    use \Service\Traits\Helpers;
+
     private $config;
     private $userId;
 

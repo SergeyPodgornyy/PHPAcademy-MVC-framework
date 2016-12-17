@@ -98,7 +98,7 @@ class Route
         if (is_string($callable) && preg_match($regex, $callable, $matches)) {
             $class = $matches[1];
             $method = $matches[2];
-            $callable = function() use ($class, $method) {
+            $callable = function () use ($class, $method) {
                 static $obj = null;
                 if ($obj === null) {
                     $obj = new $class;

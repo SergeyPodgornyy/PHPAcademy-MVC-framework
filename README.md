@@ -27,3 +27,13 @@ Then start a server
 ```bash
     php -S 0.0.0.0:8000 -t public/
 ```
+
+***
+
+### Run CodeSniffer
+
+To check your app to accordance to PSR standards, run the following script
+
+```bash
+    php vendor/bin/phpcs --encoding=utf8
+```

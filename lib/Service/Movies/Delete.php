@@ -4,9 +4,13 @@ namespace Service\Movie;
 
 class Delete extends \Service\Base
 {
-    public function validate($params = array())
+    public function validate(array $params)
     {
-        return $params;
+        $rules = [
+            'Id'    => ['required', 'positive_integer'],
+        ];
+
+        return \Service\Validator::validate($params, $rules);
     }
 
     public function execute(array $params)
