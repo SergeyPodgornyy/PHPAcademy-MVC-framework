@@ -1,3 +1,12 @@
 <?php
 
-return [];
+return [
+    'headerAccessToken' => [
+        'name'      => 'FRAMEWORK-TOKEN',
+        'values'    => [
+            'PORTAL'    => '5f17b62a9d9ed5c7e50cabcf89908651',
+            'ADMIN'     => '97ea85b6791028356ad7eeca5b75efb4',
+            'CUSTOMER'  => '9400749d689814da8a8a7eed86b3f56d',
+        ],
+    ],
+];
