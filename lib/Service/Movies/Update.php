@@ -8,9 +8,9 @@ class Update extends \Service\Base
     {
         $rules = [
             'Id'        => ['required', 'positive_integer'],
-            'Title'     => ['not_empty', 'latin_string'],
+            'Title'     => ['not_empty', ['max_length' => 255]],
             'Year'      => ['not_empty', 'positive_integer'],
-            'Formar'    => ['not_empty', ['one_of' => ['DVD', 'Blu-Ray', 'VHS']]],
+            'Format'    => ['not_empty', ['one_of' => ['DVD', 'Blu-Ray', 'VHS']]],
         ];
 
         return \Service\Validator::validate($params, $rules);
@@ -18,6 +18,35 @@ class Update extends \Service\Base
 
     public function execute(array $params)
     {
-        return $params;
+        $movie = \Model\Movie::findById($params['Id']);
+        if (!$movie) {
+            throw new \Service\X([
+                'Type'    => 'FORMAT_ERROR',
+                'Fields'  => ['Id' => 'WRONG'],
+                'Message' => 'Movie does not exists'
+            ]);
+        }
+
+        try {
+            \Model\Utils\Transaction::beginTransaction();
+
+            // ============= Update Movie data ==========================
+            $updatedMovie = array_merge(
+                \Model\Movie::toCamelCase($movie),
+                $params
+            );
+            \Model\Movie::update($params['Id'], $updatedMovie);
+            // =========== End Update Movie data ========================
+
+            \Model\Utils\Transaction::commitTransaction();
+        } catch (\Exception $e) {
+            \Model\Utils\Transaction::rollbackTransaction();
+            throw $e;
+        }
+
+        return [
+            'Status'    => 1,
+            'Movie'     => $updatedMovie,
+        ];
     }
 }

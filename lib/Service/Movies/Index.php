@@ -21,6 +21,27 @@ class Index extends \Service\Base
 
     public function execute(array $params)
     {
-        return $params;
+        $params += [
+            'Limit'     => 10,
+            'Offset'    => 0,
+            'SortField' => 'id',
+            'SortOrder' => 'asc',
+        ];
+
+        $total = $filteredRecords = \Model\Movie::count();
+
+        if (isset($params['Search'])) {
+            $filteredRecords = \Model\Movie::countFiltered($params);
+            $movies = \Model\Movie::search($params);
+        } else {
+            $movies = \Model\Movie::index($params);
+        }
+
+        return [
+            'Status'            => 1,
+            'Movies'            => $movies,
+            'Total'             => $total,
+            'FilteredRecords'   => $filteredRecords
+        ];
     }
 }

@@ -15,6 +15,25 @@ class Delete extends \Service\Base
 
     public function execute(array $params)
     {
-        return $params;
+        $movie = \Model\Movie::findById($params['Id']);
+        if (!$movie) {
+            throw new \Service\X([
+                'Type'    => 'FORMAT_ERROR',
+                'Fields'  => ['Id' => 'WRONG'],
+                'Message' => 'Movie does not exists'
+            ]);
+        }
+
+        if (!\Model\Movie::delete(['Id' => [$params['Id']]])) {
+            throw new \Service\X([
+                'Type'    => 'FORMAT_ERROR',
+                'Fields'  => ['Id' => 'WRONG'],
+                'Message' => 'Cannot delete a movie'
+            ]);
+        }
+
+        return [
+            'Status'    => 1,
+        ];
     }
 }
