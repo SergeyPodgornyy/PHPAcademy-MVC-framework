@@ -1,6 +1,24 @@
 <?php
 
 return [
+    'dbConfig'  => [
+        'main'      => [
+            'type'     => 'mysql',
+            'host'     => 'localhost',
+            'name'     => 'phpacademy_movies_db',
+            'user'     => 'root',
+            'password' => '',
+            'charset'  => 'utf8',
+        ],
+        'test'      => [
+            'type'     => 'mysql',
+            'host'     => 'localhost',
+            'name'     => 'phpacademy_movies_db_test',
+            'user'     => 'root',
+            'password' => '',
+            'charset'  => 'utf8',
+        ],
+    ],
     'headerAccessToken' => [
         'name'      => 'FRAMEWORK-TOKEN',
         'values'    => [

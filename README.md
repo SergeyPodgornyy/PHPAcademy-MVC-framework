@@ -16,6 +16,12 @@ Copy config file
     cp etc/app-conf.php.sample etc/app-conf.php
 ```
 
+Migrate data to your database
+
+```bash
+    php deploy/setup.php -fd
+```
+
 Then start a server
 
 ```bash
