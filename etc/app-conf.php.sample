@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'frameworkOptions'  => [
+        'templatesPath'     => __DIR__ . '/../public/static/',
+    ],
     'dbConfig'  => [
         'main'      => [
             'type'     => 'mysql',

@@ -7,8 +7,7 @@ class AppFactory
     public static function create($config)
     {
         // Prepare app
-        \Framework\App::$templatesPath = __DIR__ . '/../public/static/';
-        $app = new \Framework\App;
+        $app = new \Framework\App($config['frameworkOptions']);
         $app->config = $config;
 
         // Prepare middleware
@@ -21,6 +20,30 @@ class AppFactory
         $app->get('/library', function () use ($app) {
             $app->render('index.php');
         });
+        $movie = new \Controller\Movie($app);
+        $app->get('/movies/', [$movie, 'getIndex']);
+        $app->get('/movies/create/', [$movie, 'getCreate']);
+        $app->get('/movies/:id', [$movie, 'getShow']);
+        $app->get('/movies/:id/edit', [$movie, 'getEdit']);
+
+        // TODO `books` and `music` ============================================
+        $app->get('/books/', function () use ($app) {
+            $app->render('catalog.php', [
+                'page'  => 'books',
+                'title' => 'Books',
+                'items' => [],
+            ]);
+        });
+        $app->get('/music/', function () use ($app) {
+            $app->render('catalog.php', [
+                'page'  => 'music',
+                'title' => 'Music',
+                'items' => [],
+            ]);
+        });
+        // end TODO ============================================================
+
+        // Test routes
         $app->get('/welcome/', function () use ($app) {
             $app->render('test.php');
         });
@@ -29,14 +52,6 @@ class AppFactory
         });
 
         // Define API routes
-        $dashboard = new \Controller\Dashboard($app);
-        $app->get('/api/dashboard/', [$dashboard, 'index']);
-        $app->get('/api/dashboard/:id', [$dashboard, 'show']);
-        $app->post('/api/dashboard/', [$dashboard, 'create']);
-        $app->post('/api/dashboard/:id', [$dashboard, 'update']);
-        $app->delete('/api/dashboard/:id', [$dashboard, 'delete']);
-
-        $movie = new \Controller\Movie($app);
         $app->get('/api/movies/', [$movie, 'index']);
         $app->get('/api/movies/:id', [$movie, 'show']);
         $app->post('/api/movies/', [$movie, 'create']);

@@ -7,18 +7,24 @@ class App
     private $router;
     private $view;
 
-    public static $templatesPath = '../templates';
+    private $defaultOptions = array(
+        'templatesPath' => '../templates',
+    );
 
     /**
      * @var mixed Callable to be invoked if no matching routes are found
      */
     protected $notFound;
 
-    public function __construct()
+    public function __construct(array $options = array())
     {
         $this->router = new \Framework\Router;
         $this->view = new \Framework\View;
-        $this->view->setTemplatesDirectory(self::$templatesPath);
+
+        $templatesPath = isset($options['templatesPath'])
+            ? $options['templatesPath']
+            : $this->defaultOptions['templatesPath'];
+        $this->view->setTemplatesDirectory($templatesPath);
     }
 
     /********************************************************************************

@@ -1,5 +1,5 @@
 {
-  "name": "MVC-Framework",
+  "name": "mvc-framework",
   "homepage": "https://github.com/SergeyPodgornyy/PHPAcademy-MVC-framework",
   "authors": [
     "Sergey Podgornyy <sergey.podgornyy@yahoo.de>"
@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "bootstrap": "*",
-    "jquery": "*"
+    "jquery": "*",
+    "chosen": "*"
   }
 }

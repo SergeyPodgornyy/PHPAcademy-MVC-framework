@@ -509,6 +509,8 @@ table {
 html {overflow-y: scroll; overflow-x: hidden;}
 body {font-family: 'Open Sans', sans-serif; background:#f0eeed; color: #676767;}
 
+.clear-fix {clear: both; margin-top: 10px; margin-bottom: 10px;}
+
 .wrapper {width: 980px; margin: 0 auto;}
 #content {padding: 20px 0 80px;}
 .header:after {content:"";height:0;display:block;visibility:hidden;clear:both;}
@@ -524,7 +526,7 @@ body {font-family: 'Open Sans', sans-serif; background:#f0eeed; color: #676767;}
     line-height: 95px;
     padding: 10px 0 0  50px;
     margin: 0;
-    width: 100px;
+    width: 150px;
     text-align: left;
     background: url('../img/nav-sprite.png') no-repeat 0px 105px;
     white-space: nowrap;
@@ -559,7 +561,7 @@ body {font-family: 'Open Sans', sans-serif; background:#f0eeed; color: #676767;}
     font-weight: normal;
     padding-top: 20px;
 }
-.section.catalog ul.catalog {margin: 0 0 -17px 0; padding: 0; width: 997px;}
+.section.catalog ul.catalog {margin: 0 0 -17px 0; padding: 0; width: 997px; clear: both;}
 .section.catalog ul.catalog li {
     display: inline-block;
     list-style: none;
@@ -703,8 +705,3 @@ form input[type="submit"], button {
 .footer a {text-decoration: none; color: #539def; margin: 0 10px;}
 .footer li:first-child a {margin-left: 4px;}
 .footer a:hover, .footer a:active {text-decoration: underline;}
-
-.show-movies {
-    margin: 0 auto;
-    display: inherit;
-}

@@ -9,7 +9,6 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="/static/vendor/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/static/js/main.js"></script>
 </body>
 </html>
