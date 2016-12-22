@@ -2,7 +2,11 @@
 
 namespace Service\Cast;
 
-class Index extends \Service\Base
+use Model\Cast;
+use Service\Base;
+use Service\Validator;
+
+class Index extends Base
 {
     public function validate($params)
     {
@@ -16,7 +20,7 @@ class Index extends \Service\Base
             'SortOrder' => ['one_of' => ['asc', 'desc']],
         ];
 
-        return \Service\Validator::validate($params, $rules);
+        return Validator::validate($params, $rules);
     }
 
     public function execute($params)
@@ -26,13 +30,13 @@ class Index extends \Service\Base
             'SortOrder' => 'asc',
         ];
 
-        $total = $filteredRecords = \Model\Cast::count();
+        $total = $filteredRecords = Cast::count();
 
         if (isset($params['Search'])) {
-            $filteredRecords = \Model\Cast::countFiltered($params);
-            $casts = \Model\Cast::search($params);
+            $filteredRecords = Cast::countFiltered($params);
+            $casts = Cast::search($params);
         } else {
-            $casts = \Model\Cast::index($params);
+            $casts = Cast::index($params);
         }
 
         return [

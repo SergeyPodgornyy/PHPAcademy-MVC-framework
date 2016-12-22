@@ -2,7 +2,11 @@
 
 namespace Service\Cast;
 
-class Create extends \Service\Base
+use Model\Cast;
+use Service\Base;
+use Service\Validator;
+
+class Create extends Base
 {
     public function validate($params)
     {
@@ -11,7 +15,7 @@ class Create extends \Service\Base
             'Surname'   => ['required', ['max_length' => 255]],
         ];
 
-        return \Service\Validator::validate($params, $rules);
+        return Validator::validate($params, $rules);
     }
 
     public function execute($params)
@@ -21,7 +25,7 @@ class Create extends \Service\Base
             'Surname'   => '',
         ];
 
-        $castId = \Model\Cast::create($params);
+        $castId = Cast::create($params);
 
         return [
             'Status'   => 1,

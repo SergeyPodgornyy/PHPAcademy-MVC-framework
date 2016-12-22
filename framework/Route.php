@@ -30,6 +30,11 @@ class Route
     protected $paramNames = array();
 
     /**
+     * @var array key array of URL parameter names with + at the end
+     */
+    protected $paramNamesPath = array();
+
+    /**
      * @var array HTTP methods supported by this Route
      */
     protected $methods = array();

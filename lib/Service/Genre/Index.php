@@ -2,7 +2,11 @@
 
 namespace Service\Genre;
 
-class Index extends \Service\Base
+use Model\Genre;
+use Service\Base;
+use Service\Validator;
+
+class Index extends Base
 {
     public function validate($params)
     {
@@ -16,7 +20,7 @@ class Index extends \Service\Base
             'SortOrder' => ['one_of' => ['asc', 'desc']],
         ];
 
-        return \Service\Validator::validate($params, $rules);
+        return Validator::validate($params, $rules);
     }
 
     public function execute($params)
@@ -26,13 +30,13 @@ class Index extends \Service\Base
             'SortOrder' => 'asc',
         ];
 
-        $total = $filteredRecords = \Model\Genre::count();
+        $total = $filteredRecords = Genre::count();
 
         if (isset($params['Search'])) {
-            $filteredRecords = \Model\Genre::countFiltered($params);
-            $genres = \Model\Genre::search($params);
+            $filteredRecords = Genre::countFiltered($params);
+            $genres = Genre::search($params);
         } else {
-            $genres = \Model\Genre::index($params);
+            $genres = Genre::index($params);
         }
 
         return [

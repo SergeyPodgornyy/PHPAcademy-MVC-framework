@@ -2,19 +2,28 @@
 
 namespace Service\Movie;
 
-class Update extends \Service\Base
+use Model\Cast;
+use Model\Director;
+use Model\Genre;
+use Model\Movie;
+use Model\Utils\Transaction;
+use Service\Base;
+use Service\Validator;
+use Service\X;
+
+class Update extends Base
 {
     public function validate(array $params)
     {
         $genreIds = array_map(function ($genre) {
             return $genre['id'];
-        }, \Model\Genre::index([]));
+        }, Genre::index([]));
         $directorIds = array_map(function ($director) {
             return $director['id'];
-        }, \Model\Director::index([]));
+        }, Director::index([]));
         $castIds = array_map(function ($cast) {
             return $cast['id'];
-        }, \Model\Cast::index([]));
+        }, Cast::index([]));
 
         $rules = [
             'Id'        => ['required', 'positive_integer'],
@@ -26,14 +35,14 @@ class Update extends \Service\Base
             'Stars'     => ['required', ['list_of' => ['one_of' => $castIds]]],
         ];
 
-        return \Service\Validator::validate($params, $rules);
+        return Validator::validate($params, $rules);
     }
 
     public function execute(array $params)
     {
-        $movie = \Model\Movie::findById($params['Id']);
+        $movie = Movie::findById($params['Id']);
         if (!$movie) {
-            throw new \Service\X([
+            throw new X([
                 'Type'    => 'FORMAT_ERROR',
                 'Fields'  => ['Id' => 'WRONG'],
                 'Message' => 'Movie does not exists'
@@ -41,23 +50,21 @@ class Update extends \Service\Base
         }
 
         try {
-            \Model\Utils\Transaction::beginTransaction();
+            Transaction::beginTransaction();
 
             // ============= Update Movie data ==========================
             $updatedMovie = array_merge(
-                \Model\Movie::toCamelCase($movie),
+                Movie::toCamelCase($movie),
                 $params
             );
-            \Model\Movie::update($params['Id'], $updatedMovie);
-            \Model\Movie::removeStars($params['Id']);
-            foreach ($params['Stars'] as $star) {
-                \Model\Movie::addStar($params['Id'], $star);
-            }
+            Movie::update($params['Id'], $updatedMovie);
+            Movie::removeStars($params['Id']);
+            Movie::addStars($params['Id'], $params['Stars']);
             // =========== End Update Movie data ========================
 
-            \Model\Utils\Transaction::commitTransaction();
+            Transaction::commitTransaction();
         } catch (\Exception $e) {
-            \Model\Utils\Transaction::rollbackTransaction();
+            Transaction::rollbackTransaction();
             throw $e;
         }
 

@@ -50,7 +50,7 @@ class Router
      * Add a route object to the router
      * @param  \Framework\Route     $route      The Framework Route
      */
-    public function map(\Framework\Route $route)
+    public function map(Route $route)
     {
         $route->setPattern($route->getPattern());
         $this->routes[] = $route;

@@ -19,6 +19,7 @@ class View
     /**
      * Append data to view
      * @param  array $data
+     * @throws \Exception
      */
     public function appendData($data)
     {

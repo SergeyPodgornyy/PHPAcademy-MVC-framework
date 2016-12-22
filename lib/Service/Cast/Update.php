@@ -2,7 +2,13 @@
 
 namespace Service\Cast;
 
-class Update extends \Service\Base
+use Model\Cast;
+use Model\Utils\Transaction;
+use Service\Base;
+use Service\Validator;
+use Service\X;
+
+class Update extends Base
 {
     public function validate($params)
     {
@@ -12,14 +18,14 @@ class Update extends \Service\Base
             'Surname'   => ['required', ['max_length' => 255]],
         ];
 
-        return \Service\Validator::validate($params, $rules);
+        return Validator::validate($params, $rules);
     }
 
     public function execute($params)
     {
-        $cast = \Model\Cast::findById($params['Id']);
+        $cast = Cast::findById($params['Id']);
         if (!$cast) {
-            throw new \Service\X([
+            throw new X([
                 'Type'    => 'FORMAT_ERROR',
                 'Fields'  => ['Id' => 'WRONG'],
                 'Message' => 'Cast does not exists'
@@ -27,19 +33,19 @@ class Update extends \Service\Base
         }
 
         try {
-            \Model\Utils\Transaction::beginTransaction();
+            Transaction::beginTransaction();
 
             // ============= Update Cast data ==========================
             $updatedCast = array_merge(
-                \Model\Cast::toCamelCase($cast),
+                Cast::toCamelCase($cast),
                 $params
             );
-            \Model\Cast::update($params['Id'], $updatedCast);
+            Cast::update($params['Id'], $updatedCast);
             // =========== End Update Cast data ========================
 
-            \Model\Utils\Transaction::commitTransaction();
+            Transaction::commitTransaction();
         } catch (\Exception $e) {
-            \Model\Utils\Transaction::rollbackTransaction();
+            Transaction::rollbackTransaction();
             throw $e;
         }
 

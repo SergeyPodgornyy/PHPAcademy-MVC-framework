@@ -12,7 +12,7 @@ class X extends \Exception
     protected $type;
     protected $message = '';
 
-    public function __construct($attrs = [])
+    public function __construct(array $attrs = [])
     {
         if (isset($attrs['Message'])) {
             $this->message = $attrs['Message'];

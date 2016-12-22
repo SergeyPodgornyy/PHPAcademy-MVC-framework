@@ -2,7 +2,11 @@
 
 namespace Service\Movie;
 
-class Index extends \Service\Base
+use Model\Movie;
+use Service\Base;
+use Service\Validator;
+
+class Index extends Base
 {
     public function validate($params = array())
     {
@@ -16,7 +20,7 @@ class Index extends \Service\Base
             'SortOrder' => ['one_of' => ['asc', 'desc']],
         ];
 
-        return \Service\Validator::validate($params, $rules);
+        return Validator::validate($params, $rules);
     }
 
     public function execute(array $params)
@@ -28,20 +32,20 @@ class Index extends \Service\Base
             'SortOrder' => 'asc',
         ];
 
-        $total = $filteredRecords = \Model\Movie::count();
+        $total = $filteredRecords = Movie::count();
 
         if (isset($params['Search'])) {
-            $filteredRecords = \Model\Movie::countFiltered($params);
-            $movies = \Model\Movie::search($params);
+            $filteredRecords = Movie::countFiltered($params);
+            $movies = Movie::search($params);
         } else {
-            $movies = \Model\Movie::index($params);
+            $movies = Movie::index($params);
         }
 
         return [
             'Status'            => 1,
             'Movies'            => $movies,
             'Total'             => $total,
-            'FilteredRecords'   => $filteredRecords
+            'FilteredRecords'   => $filteredRecords,
         ];
     }
 }

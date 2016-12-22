@@ -66,9 +66,9 @@ class TransactionPDO extends PDO
     }
 
     /**
-    * Rollback current transaction,
+    * Rollback current transaction
     *
-    * @throws PDOException if there is no transaction started
+    * @throws \PDOException if there is no transaction started
     * @return bool|void
     */
     public function rollBack()

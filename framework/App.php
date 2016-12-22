@@ -2,6 +2,9 @@
 
 namespace Framework;
 
+use Framework\Exception\Pass;
+use Framework\Exception\Stop;
+
 class App
 {
     private $router;
@@ -18,8 +21,8 @@ class App
 
     public function __construct(array $options = array())
     {
-        $this->router = new \Framework\Router;
-        $this->view = new \Framework\View;
+        $this->router = new Router;
+        $this->view = new View;
 
         $templatesPath = isset($options['templatesPath'])
             ? $options['templatesPath']
@@ -52,7 +55,7 @@ class App
         $pattern = array_shift($args);
         $callable = array_pop($args);
         $caseSensitive = true;
-        $route = new \Framework\Route($pattern, $callable, $caseSensitive);
+        $route = new Route($pattern, $callable, $caseSensitive);
         $this->router->map($route);
         if (count($args) > 0) {
             $route->setMiddleware($args);
@@ -155,7 +158,7 @@ class App
      */
     public function stop()
     {
-        throw new \Framework\Exception\Stop();
+        throw new Stop();
     }
 
     /**
@@ -178,14 +181,14 @@ class App
                     if ($dispatched) {
                         break;
                     }
-                } catch (\Framework\Exception\Pass $e) {
+                } catch (Pass $e) {
                     continue;
                 }
             }
             if (!$dispatched) {
                 $this->notFound();
             }
-        } catch (\Framework\Exception\Stop $e) {
+        } catch (Stop $e) {
             echo ob_get_clean();
         } catch (\Exception $e) {
             // Handle somehow an exception

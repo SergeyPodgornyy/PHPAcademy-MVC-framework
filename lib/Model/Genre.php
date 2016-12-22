@@ -2,7 +2,9 @@
 
 namespace Model;
 
-class Genre implements \Model\ModelInterface
+use Model\Driver\Engine;
+
+class Genre implements ModelInterface
 {
 
     use Traits\BaseFunctions;
@@ -10,9 +12,14 @@ class Genre implements \Model\ModelInterface
     const CONNECTION_NAME = 'framework';
     const TABLE_NAME = 'genres';
 
+    /**
+     * Create connection
+     *
+     * @return bool|mixed
+     */
     public static function getConnection()
     {
-        return \Model\Driver\Engine::getConnection(self::CONNECTION_NAME);
+        return Engine::getConnection(self::CONNECTION_NAME);
     }
 
     public static function create($data = array())
@@ -20,6 +27,12 @@ class Genre implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Return list of genres
+     *
+     * @param   array   $params
+     * @return  bool
+     */
     public static function index($params = array())
     {
         $connection = self::getConnection();
@@ -42,6 +55,12 @@ class Genre implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Search genres by name
+     *
+     * @param   array   $params
+     * @return  bool
+     */
     public static function search($params = array())
     {
         $connection = self::getConnection();
@@ -74,6 +93,11 @@ class Genre implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Count all directors
+     *
+     * @return bool
+     */
     public static function count()
     {
         $connection = self::getConnection();
@@ -91,6 +115,12 @@ class Genre implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Count filtered rows
+     *
+     * @param   array   $params
+     * @return  bool
+     */
     public static function countFiltered($params)
     {
         $connection = self::getConnection();
@@ -117,6 +147,12 @@ class Genre implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Transform database columns to Camel Case
+     *
+     * @param   array $genre
+     * @return  array
+     */
     public static function toCamelCase($genre)
     {
         return [

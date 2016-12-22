@@ -2,19 +2,27 @@
 
 namespace Service\Movie;
 
-class Create extends \Service\Base
+use Model\Cast;
+use Model\Director;
+use Model\Genre;
+use Model\Movie;
+use Model\Utils\Transaction;
+use Service\Base;
+use Service\Validator;
+
+class Create extends Base
 {
     public function validate(array $params)
     {
         $genreIds = array_map(function ($genre) {
             return $genre['id'];
-        }, \Model\Genre::index([]));
+        }, Genre::index([]));
         $directorIds = array_map(function ($director) {
             return $director['id'];
-        }, \Model\Director::index([]));
+        }, Director::index([]));
         $castIds = array_map(function ($cast) {
             return $cast['id'];
-        }, \Model\Cast::index([]));
+        }, Cast::index([]));
 
         $rules = [
             'Title'     => ['required', ['max_length' => 100]],
@@ -25,7 +33,7 @@ class Create extends \Service\Base
             'Stars'     => ['required', ['list_of' => ['one_of' => $castIds]]],
         ];
 
-        return \Service\Validator::validate($params, $rules);
+        return Validator::validate($params, $rules);
     }
 
     public function execute(array $params)
@@ -40,18 +48,16 @@ class Create extends \Service\Base
         ];
 
         try {
-            \Model\Utils\Transaction::beginTransaction();
+            Transaction::beginTransaction();
 
             // ============= Create Movie data ==========================
-            $movieId = \Model\Movie::create($params);
-            foreach ($params['Stars'] as $star) {
-                \Model\Movie::addStar($movieId, $star);
-            }
+            $movieId = Movie::create($params);
+            Movie::addStars($movieId, $params['Stars']);
             // =========== End Create Movie data ========================
 
-            \Model\Utils\Transaction::commitTransaction();
+            Transaction::commitTransaction();
         } catch (\Exception $e) {
-            \Model\Utils\Transaction::rollbackTransaction();
+            Transaction::rollbackTransaction();
             throw $e;
         }
 

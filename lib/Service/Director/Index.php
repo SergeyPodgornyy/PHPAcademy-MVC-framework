@@ -2,7 +2,11 @@
 
 namespace Service\Director;
 
-class Index extends \Service\Base
+use Model\Director;
+use Service\Base;
+use Service\Validator;
+
+class Index extends Base
 {
     public function validate($params)
     {
@@ -16,7 +20,7 @@ class Index extends \Service\Base
             'SortOrder' => ['one_of' => ['asc', 'desc']],
         ];
 
-        return \Service\Validator::validate($params, $rules);
+        return Validator::validate($params, $rules);
     }
 
     public function execute($params)
@@ -26,13 +30,13 @@ class Index extends \Service\Base
             'SortOrder' => 'asc',
         ];
 
-        $total = $filteredRecords = \Model\Director::count();
+        $total = $filteredRecords = Director::count();
 
         if (isset($params['Search'])) {
-            $filteredRecords = \Model\Director::countFiltered($params);
-            $directors = \Model\Director::search($params);
+            $filteredRecords = Director::countFiltered($params);
+            $directors = Director::search($params);
         } else {
-            $directors = \Model\Director::index($params);
+            $directors = Director::index($params);
         }
 
         return [

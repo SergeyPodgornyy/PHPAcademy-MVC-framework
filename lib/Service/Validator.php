@@ -2,11 +2,19 @@
 
 namespace Service;
 
+use Validator\LIVR;
+
 class Validator
 {
-    public static function validate($data, $livr)
+    /**
+     * @param   array       $data   Data to validate
+     * @param   array       $livr   LIVR rules
+     * @return  array|bool
+     * @throws X
+     */
+    public static function validate(array $data, array $livr)
     {
-        \Validator\LIVR::registerDefaultRules([
+        LIVR::registerDefaultRules([
             'latin_string' => function () {
                 return function ($value) {
                     if (!isset($value) || $value === '') {
@@ -44,7 +52,7 @@ class Validator
             }
         ]);
 
-        $validator = new \Validator\LIVR($livr);
+        $validator = new LIVR($livr);
 
         $validated = $validator->validate($data);
         $errors    = $validator->getErrors();
@@ -52,7 +60,7 @@ class Validator
         if ($errors) {
             throw new X([
                 'Type'      => 'FORMAT_ERROR',
-                'Fields'    => $errors
+                'Fields'    => $errors,
             ]);
         }
 

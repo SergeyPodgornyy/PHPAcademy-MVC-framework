@@ -2,6 +2,8 @@
 
 namespace Model\Utils;
 
+use Model\Driver\Engine;
+
 class Transaction
 {
     const DB_CONNECTION_NAME = 'framework';
@@ -23,6 +25,6 @@ class Transaction
 
     private static function getConnection($name)
     {
-        return \Model\Driver\Engine::getConnection($name);
+        return Engine::getConnection($name);
     }
 }

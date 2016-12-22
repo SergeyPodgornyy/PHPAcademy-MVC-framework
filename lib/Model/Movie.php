@@ -2,7 +2,9 @@
 
 namespace Model;
 
-class Movie implements \Model\ModelInterface
+use Model\Driver\Engine;
+
+class Movie implements ModelInterface
 {
 
     use Traits\BaseFunctions;
@@ -10,11 +12,22 @@ class Movie implements \Model\ModelInterface
     const CONNECTION_NAME = 'framework';
     const TABLE_NAME = 'movies';
 
+    /**
+     * Create connection
+     *
+     * @return bool|mixed
+     */
     public static function getConnection()
     {
-        return \Model\Driver\Engine::getConnection(self::CONNECTION_NAME);
+        return Engine::getConnection(self::CONNECTION_NAME);
     }
 
+    /**
+     * Insert new movie
+     *
+     * @param   array $data
+     * @return  bool
+     */
     public static function create($data = array())
     {
         $connection = self::getConnection();
@@ -56,7 +69,14 @@ class Movie implements \Model\ModelInterface
         return false;
     }
 
-    public static function update($id, $data)
+    /**
+     * Update movie by Id
+     *
+     * @param   int     $id
+     * @param   array   $data
+     * @return  mixed
+     */
+    public static function update($id, array $data)
     {
         $connection = self::getConnection();
 
@@ -87,22 +107,29 @@ class Movie implements \Model\ModelInterface
         return $statement->execute();
     }
 
-    public static function addStar($movieId, $starId)
+    /**
+     * Add movie casts
+     *
+     * @param   int         $movieId
+     * @param   array       $starIds
+     * @return  bool|int
+     */
+    public static function addStars($movieId, array $starIds)
     {
         $connection = self::getConnection();
 
-        $statement = $connection->prepare(
-            " INSERT INTO movie_casts(
-                movie_id,
-                cast_id
-            ) VALUES (
-                :movie_id,
-                :cast_id
-            )"
-        );
+        $values = '';
+        foreach ($starIds as $n => $id) {
+            $values .= $n ? ',' : '';
+            $values .= "(:movie_id, :cast_id_$n)";
+        }
+
+        $statement = $connection->prepare("INSERT INTO movie_casts(movie_id, cast_id) VALUES $values");
 
         $statement->bindValue(':movie_id', $movieId);
-        $statement->bindValue(':cast_id', $starId);
+        foreach ($starIds as $n => $id) {
+            $statement->bindValue(":cast_id_$n", $id);
+        }
 
         $inserted = $statement->execute();
 
@@ -113,6 +140,12 @@ class Movie implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Remove info about movies casts
+     *
+     * @param   int     $movieId
+     * @return  mixed
+     */
     public static function removeStars($movieId)
     {
         $connection = self::getConnection();
@@ -126,6 +159,12 @@ class Movie implements \Model\ModelInterface
         return $statement->execute();
     }
 
+    /**
+     * Return movies casts by movie_id
+     *
+     * @param   int         $movieId
+     * @return  bool|array
+     */
     public static function getMoviesCasts($movieId = 0)
     {
         $connection = self::getConnection();
@@ -147,6 +186,12 @@ class Movie implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Return list of movies
+     *
+     * @param   array   $params
+     * @return  bool
+     */
     public static function index($params = array())
     {
         $connection = self::getConnection();
@@ -169,6 +214,12 @@ class Movie implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Search movies by title
+     *
+     * @param   array   $params
+     * @return  bool
+     */
     public static function search($params = array())
     {
         $connection = self::getConnection();
@@ -201,6 +252,11 @@ class Movie implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Count all movies
+     *
+     * @return bool
+     */
     public static function count()
     {
         $connection = self::getConnection();
@@ -218,6 +274,12 @@ class Movie implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Count filtered rows
+     *
+     * @param   array   $params
+     * @return  bool
+     */
     public static function countFiltered($params)
     {
         $connection = self::getConnection();
@@ -244,6 +306,12 @@ class Movie implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Delete movie
+     *
+     * @param   array   $data
+     * @return  bool
+     */
     public static function delete($data = array())
     {
         $connection = self::getConnection();
@@ -275,6 +343,12 @@ class Movie implements \Model\ModelInterface
         return $statement->execute();
     }
 
+    /**
+     * Select one movie by Id with genres and directors
+     *
+     * @param   array   $data
+     * @return  mixed
+     */
     public static function selectOne($data = array())
     {
         $connection = self::getConnection();
@@ -300,6 +374,12 @@ class Movie implements \Model\ModelInterface
         return $row;
     }
 
+    /**
+     * Transform database columns to Camel Case
+     *
+     * @param   array   $movie
+     * @return  array
+     */
     public static function toCamelCase($movie)
     {
         return [

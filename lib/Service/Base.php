@@ -2,14 +2,16 @@
 
 namespace Service;
 
+use Service\Traits\Helpers;
+
 abstract class Base
 {
-    use \Service\Traits\Helpers;
+    use Helpers;
 
     private $config;
     private $userId;
 
-    public function __construct($attrs)
+    public function __construct(array $attrs = [])
     {
         if (isset($attrs['config'])) {
             $this->config = $attrs['config'];
@@ -29,7 +31,7 @@ abstract class Base
         return $this->userId;
     }
 
-    public function run($params = [])
+    final public function run($params = [])
     {
         try {
             $validated = $this->validate($params);

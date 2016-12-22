@@ -10,6 +10,7 @@ class Base
 
     /**
      * Create object
+     * @param App $app
      */
     public function __construct(App $app)
     {
@@ -64,8 +65,12 @@ class Base
 
     /**
      * mix run( function $cb, bool $isSkipSuccessRender ) - action wrapper
+     * @param callable      $cb
+     * @param bool          $isSkipSuccessRender
+     * @param bool          $file
+     * @return array
      */
-    final public function run($cb, $isSkipSuccessRender = null, $file = false)
+    final public function run($cb, $isSkipSuccessRender = false, $file = false)
     {
         try {
             $result = call_user_func($cb);
@@ -88,6 +93,8 @@ class Base
 
     /**
      * mix action( string $class ) - create service object
+     * @param  callable     $class
+     * @return mixed
      */
     public function action($class)
     {

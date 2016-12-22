@@ -2,19 +2,31 @@
 
 namespace Model;
 
-class Cast implements \Model\ModelInterface
-{
+use Model\Driver\Engine;
 
+class Cast implements ModelInterface
+{
     use Traits\BaseFunctions;
 
     const CONNECTION_NAME = 'framework';
     const TABLE_NAME = 'casts';
 
+    /**
+     * Create connection
+     *
+     * @return bool|mixed
+     */
     public static function getConnection()
     {
-        return \Model\Driver\Engine::getConnection(self::CONNECTION_NAME);
+        return Engine::getConnection(self::CONNECTION_NAME);
     }
 
+    /**
+     * Insert new cast
+     *
+     * @param   array $data
+     * @return  bool
+     */
     public static function create($data = array())
     {
         $connection = self::getConnection();
@@ -44,7 +56,14 @@ class Cast implements \Model\ModelInterface
         return false;
     }
 
-    public static function update($id, $data)
+    /**
+     * Update cast by Id
+     *
+     * @param   int     $id
+     * @param   array   $data
+     * @return  mixed
+     */
+    public static function update($id, array $data)
     {
         $connection = self::getConnection();
 
@@ -66,6 +85,12 @@ class Cast implements \Model\ModelInterface
         return $statement->execute();
     }
 
+    /**
+     * Return list of casts
+     *
+     * @param   array   $params
+     * @return  bool
+     */
     public static function index($params = array())
     {
         $connection = self::getConnection();
@@ -88,6 +113,12 @@ class Cast implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Search casts by surname
+     *
+     * @param   array   $params
+     * @return  bool
+     */
     public static function search($params = array())
     {
         $connection = self::getConnection();
@@ -120,6 +151,11 @@ class Cast implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Count all casts
+     *
+     * @return bool
+     */
     public static function count()
     {
         $connection = self::getConnection();
@@ -137,7 +173,13 @@ class Cast implements \Model\ModelInterface
         return false;
     }
 
-    public static function countFiltered($params)
+    /**
+     * Count filtered rows
+     *
+     * @param   array   $params
+     * @return  bool
+     */
+    public static function countFiltered(array $params)
     {
         $connection = self::getConnection();
 
@@ -163,6 +205,12 @@ class Cast implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Delete cast
+     *
+     * @param   array   $data
+     * @return  bool
+     */
     public static function delete($data = array())
     {
         $connection = self::getConnection();
@@ -194,7 +242,13 @@ class Cast implements \Model\ModelInterface
         return $statement->execute();
     }
 
-    public static function toCamelCase($cast)
+    /**
+     * Transform database columns to Camel Case
+     *
+     * @param   array   $cast
+     * @return  array
+     */
+    public static function toCamelCase(array $cast)
     {
         return [
             'Id'        => $cast['id'],

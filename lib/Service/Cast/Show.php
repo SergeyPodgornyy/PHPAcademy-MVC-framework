@@ -2,7 +2,12 @@
 
 namespace Service\Cast;
 
-class Show extends \Service\Base
+use Model\Cast;
+use Service\Base;
+use Service\Validator;
+use Service\X;
+
+class Show extends Base
 {
     public function validate($params)
     {
@@ -10,15 +15,15 @@ class Show extends \Service\Base
             'Id'    => ['required', 'positive_integer'],
         ];
 
-        return \Service\Validator::validate($params, $rules);
+        return Validator::validate($params, $rules);
     }
 
     public function execute($params)
     {
-        $cast = \Model\Cast::findById($params['Id']);
+        $cast = Cast::findById($params['Id']);
 
         if (!$cast) {
-            throw new \Service\X([
+            throw new X([
                 'Type'    => 'FORMAT_ERROR',
                 'Fields'  => ['Id' => 'WRONG'],
                 'Message' => 'Cast does not exists'

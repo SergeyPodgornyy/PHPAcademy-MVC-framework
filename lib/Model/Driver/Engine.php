@@ -6,7 +6,6 @@ use PDO;
 
 class Engine
 {
-
     private static $connections = [];
 
     public static function setConnection($name, $config)

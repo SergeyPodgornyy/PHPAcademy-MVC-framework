@@ -2,7 +2,9 @@
 
 namespace Model;
 
-class Director implements \Model\ModelInterface
+use Model\Driver\Engine;
+
+class Director implements ModelInterface
 {
 
     use Traits\BaseFunctions;
@@ -10,9 +12,14 @@ class Director implements \Model\ModelInterface
     const CONNECTION_NAME = 'framework';
     const TABLE_NAME = 'directors';
 
+    /**
+     * Create connection
+     *
+     * @return bool|mixed
+     */
     public static function getConnection()
     {
-        return \Model\Driver\Engine::getConnection(self::CONNECTION_NAME);
+        return Engine::getConnection(self::CONNECTION_NAME);
     }
 
     public static function create($data = array())
@@ -20,6 +27,12 @@ class Director implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Return list of directors
+     *
+     * @param   array   $params
+     * @return  bool
+     */
     public static function index($params = array())
     {
         $connection = self::getConnection();
@@ -42,6 +55,12 @@ class Director implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Search directors by surname
+     *
+     * @param   array   $params
+     * @return  bool
+     */
     public static function search($params = array())
     {
         $connection = self::getConnection();
@@ -74,6 +93,11 @@ class Director implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Count all directors
+     *
+     * @return bool
+     */
     public static function count()
     {
         $connection = self::getConnection();
@@ -91,6 +115,12 @@ class Director implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Count filtered rows
+     *
+     * @param   array   $params
+     * @return  bool
+     */
     public static function countFiltered($params)
     {
         $connection = self::getConnection();
@@ -117,6 +147,12 @@ class Director implements \Model\ModelInterface
         return false;
     }
 
+    /**
+     * Transform database columns to Camel Case
+     *
+     * @param   array $director
+     * @return  array
+     */
     public static function toCamelCase($director)
     {
         return [

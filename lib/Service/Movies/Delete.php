@@ -2,7 +2,12 @@
 
 namespace Service\Movie;
 
-class Delete extends \Service\Base
+use Model\Movie;
+use Service\Base;
+use Service\Validator;
+use Service\X;
+
+class Delete extends Base
 {
     public function validate(array $params)
     {
@@ -10,22 +15,22 @@ class Delete extends \Service\Base
             'Id'    => ['required', 'positive_integer'],
         ];
 
-        return \Service\Validator::validate($params, $rules);
+        return Validator::validate($params, $rules);
     }
 
     public function execute(array $params)
     {
-        $movie = \Model\Movie::findById($params['Id']);
+        $movie = Movie::findById($params['Id']);
         if (!$movie) {
-            throw new \Service\X([
+            throw new X([
                 'Type'    => 'FORMAT_ERROR',
                 'Fields'  => ['Id' => 'WRONG'],
                 'Message' => 'Movie does not exists'
             ]);
         }
 
-        if (!\Model\Movie::delete(['Id' => [$params['Id']]])) {
-            throw new \Service\X([
+        if (!Movie::delete(['Id' => [$params['Id']]])) {
+            throw new X([
                 'Type'    => 'FORMAT_ERROR',
                 'Fields'  => ['Id' => 'WRONG'],
                 'Message' => 'Cannot delete a movie'
