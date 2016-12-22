@@ -6,13 +6,13 @@ class Update extends \Service\Base
 {
     public function validate(array $params)
     {
-        $genreIds = array_map(function($genre) {
+        $genreIds = array_map(function ($genre) {
             return $genre['id'];
         }, \Model\Genre::index([]));
-        $directorIds = array_map(function($director) {
+        $directorIds = array_map(function ($director) {
             return $director['id'];
         }, \Model\Director::index([]));
-        $castIds = array_map(function($cast) {
+        $castIds = array_map(function ($cast) {
             return $cast['id'];
         }, \Model\Cast::index([]));
 

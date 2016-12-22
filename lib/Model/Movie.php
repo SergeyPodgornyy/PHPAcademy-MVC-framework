@@ -281,8 +281,8 @@ class Movie implements \Model\ModelInterface
 
         $id = isset($data['Id']) ? $data['Id'] : '';
 
-        $statement = $connection->prepare("
-            SELECT ".self::TABLE_NAME.".*, g.name as genre, CONCAT(d.name, ' ', d.surname) as director
+        $statement = $connection->prepare(
+            "SELECT ".self::TABLE_NAME.".*, g.name as genre, CONCAT(d.name, ' ', d.surname) as director
                 FROM ".self::TABLE_NAME."
             LEFT JOIN directors AS d
                 ON ".self::TABLE_NAME.".director_id = d.id

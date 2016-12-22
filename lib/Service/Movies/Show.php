@@ -24,10 +24,10 @@ class Show extends \Service\Base
                 'Message' => 'Movie does not exists'
             ]);
         }
-        $movie['casts'] = array_map(function($cast) {
+        $movie['casts'] = array_map(function ($cast) {
             return $cast['name'] . ' ' . $cast['surname'];
         }, \Model\Movie::getMoviesCasts($movie['id']));
-        $movie['cast_ids'] = array_map(function($cast) {
+        $movie['cast_ids'] = array_map(function ($cast) {
             return $cast['id'];
         }, \Model\Movie::getMoviesCasts($movie['id']));
 
