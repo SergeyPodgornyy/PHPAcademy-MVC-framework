@@ -643,7 +643,7 @@ form td textarea {
     font-family: 'Open Sans', sans-serif;
     resize: vertical;
 }
-form input[type="submit"], button {
+form input[type="submit"], button.confirm {
     width: 475px;
     text-align: center;
     border: 0;
@@ -655,10 +655,13 @@ form input[type="submit"], button {
     padding: 14px 0 16px;
     font-family: 'Open Sans', sans-serif;
 }
-  form input[type="submit"]:hover, button:hover {
+  form input[type="submit"]:hover, button.confirm:hover {
     background: #358dce;
     cursor: pointer;
   }
+  form input[type="submit"]:disabled, button.confirm:disabled {
+    background: #5c7c94;
+}
 .required{
     color:red;
     font-weight: normal;

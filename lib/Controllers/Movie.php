@@ -80,9 +80,10 @@ class Movie extends Base
         }, true);
 
         $this->app->render('details.php', [
-            'page'  => 'movies',
-            'title' => $res['Status'] == 1 ? $res['Movie']['title'] : '',
-            'item'  => $res['Status'] == 1 ? $res['Movie'] : [],
+            'page'      => 'movies',
+            'action'    => 'show',
+            'title'     => $res['Status'] == 1 ? $res['Movie']['title'] : '',
+            'item'      => $res['Status'] == 1 ? $res['Movie'] : [],
         ]);
     }
 
@@ -102,6 +103,7 @@ class Movie extends Base
 
         $this->app->render('movie.edit.php', [
             'page'      => 'movies',
+            'action'    => 'create',
             'title'     => 'Insert new movie',
             'genres'    => $genres['Status'] == 1 ? $genres['Genres'] : [],
             'stars'     => $casts['Status'] == 1 ? $casts['Casts'] : [],
@@ -130,6 +132,7 @@ class Movie extends Base
 
         $this->app->render('movie.edit.php', [
             'page'      => 'movies',
+            'action'    => 'update',
             'title'     => $item['Status'] == 1 ? $item['Movie']['title'] : '',
             'item'      => $item['Status'] == 1 ? $item['Movie'] : [],
             'genres'    => $genres['Status'] == 1 ? $genres['Genres'] : [],

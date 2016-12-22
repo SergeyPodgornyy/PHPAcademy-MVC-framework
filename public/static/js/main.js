@@ -1,19 +1,30 @@
-$.postJSON = function(url, data, callback) {
-    return jQuery.ajax({
-        'type' : 'POST',
-        'url': url,
-        'data': data,
-        'dataType' : 'json',
-        'success' : callback
-    });
-};
+$(document).ready(function() {
+    var template = $('#content').data('page');
+    var action = $('#content').data('action');
+    switch (template) {
+        case 'movies':
+            var templateCtrl = new Movie();
+            break;
+        default:
+            var templateCtrl = new Dashboard();
+            break;
+    }
 
-$.deleteJSON = function(url, data, callback) {
-    return jQuery.ajax({
-        'type' : 'DELETE',
-        'url': url,
-        'data': data,
-        'dataType' : 'json',
-        'success' : callback
-    });
-};
+    switch (action) {
+        case 'index':
+            templateCtrl.index();
+            break;
+        case 'show':
+            templateCtrl.show();
+            break;
+        case 'create':
+            templateCtrl.create();
+            break;
+        case 'update':
+            templateCtrl.update();
+            break;
+        default:
+            templateCtrl.init();
+            break;
+    }
+});

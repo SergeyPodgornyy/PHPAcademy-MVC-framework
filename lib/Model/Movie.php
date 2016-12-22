@@ -20,24 +20,32 @@ class Movie implements \Model\ModelInterface
         $connection = self::getConnection();
 
         $title = isset($data['Title']) ? $data['Title'] : '';
-        $year = isset($data['Year']) ? $data['Year'] : '';
-        $format = isset($data['Formar']) ? $data['Formar'] : '';
+        $year = isset($data['Year']) ? $data['Year'] : null;
+        $format = isset($data['Format']) ? $data['Format'] : '';
+        $genre = isset($data['Genre']) ? $data['Genre'] : null;
+        $director = isset($data['Director']) ? $data['Director'] : null;
 
         $statement = $connection->prepare(
             " INSERT INTO ".self::TABLE_NAME."(
                 title,
                 year,
-                format
+                format,
+                genre_id,
+                director_id
             ) VALUES (
                 :title,
                 :year,
-                :format
+                :format,
+                :genre_id,
+                :director_id
             )"
         );
 
         $statement->bindValue(':title', $title);
         $statement->bindValue(':year', $year);
         $statement->bindValue(':format', $format);
+        $statement->bindValue(':genre_id', $genre);
+        $statement->bindValue(':director_id', $director);
 
         $inserted = $statement->execute();
 
@@ -53,15 +61,19 @@ class Movie implements \Model\ModelInterface
         $connection = self::getConnection();
 
         $title = isset($data['Title']) ? $data['Title'] : '';
-        $year = isset($data['Year']) ? $data['Year'] : '';
+        $year = isset($data['Year']) ? $data['Year'] : null;
         $format = isset($data['Format']) ? $data['Format'] : '';
+        $genre = isset($data['Genre']) ? $data['Genre'] : null;
+        $director = isset($data['Director']) ? $data['Director'] : null;
 
         $statement = $connection->prepare(
             "UPDATE ".self::TABLE_NAME."
              SET
                 title = :title,
                 year = :year,
-                format = :format
+                format = :format,
+                genre_id = :genre_id,
+                director_id = :director_id
              WHERE id = :id"
         );
 
@@ -69,6 +81,47 @@ class Movie implements \Model\ModelInterface
         $statement->bindValue(':title', $title);
         $statement->bindValue(':year', $year);
         $statement->bindValue(':format', $format);
+        $statement->bindValue(':genre_id', $genre);
+        $statement->bindValue(':director_id', $director);
+
+        return $statement->execute();
+    }
+
+    public static function addStar($movieId, $starId)
+    {
+        $connection = self::getConnection();
+
+        $statement = $connection->prepare(
+            " INSERT INTO movie_casts(
+                movie_id,
+                cast_id
+            ) VALUES (
+                :movie_id,
+                :cast_id
+            )"
+        );
+
+        $statement->bindValue(':movie_id', $movieId);
+        $statement->bindValue(':cast_id', $starId);
+
+        $inserted = $statement->execute();
+
+        if ($inserted) {
+            return $connection->lastInsertId(self::TABLE_NAME);
+        }
+
+        return false;
+    }
+
+    public static function removeStars($movieId)
+    {
+        $connection = self::getConnection();
+
+        $statement = $connection->prepare(
+            "DELETE FROM movie_casts WHERE movie_id = :movie_id"
+        );
+
+        $statement->bindValue(':movie_id', $movieId);
 
         return $statement->execute();
     }

@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
     <script type="text/javascript" src="/static/vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/static/vendor/chosen/chosen.jquery.js"></script>
 </head>
 <body>
     <div class="header">
         <div class="wrapper">
-            <h1 class="branding-title"><a href="/library">Personal Media Library</a></h1>
+            <h1 class="branding-title"><a href="/">Personal Media Library</a></h1>
             <ul class="nav">
                 <li class="books <?= ($section=='books') ? 'on' : ''; ?>">
                     <a href="/books">Books</a>
@@ -27,4 +28,4 @@
             </ul>
         </div>
     </div>
-    <div id="content <?= $page; ?>">
+    <div id="content" data-page="<?= $page; ?>" data-action="<?= $action ?>">

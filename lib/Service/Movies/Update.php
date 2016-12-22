@@ -49,6 +49,10 @@ class Update extends \Service\Base
                 $params
             );
             \Model\Movie::update($params['Id'], $updatedMovie);
+            \Model\Movie::removeStars($params['Id']);
+            foreach ($params['Stars'] as $star) {
+                \Model\Movie::addStar($params['Id'], $star);
+            }
             // =========== End Update Movie data ========================
 
             \Model\Utils\Transaction::commitTransaction();

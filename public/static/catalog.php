@@ -4,6 +4,7 @@ $pageTitle = "Personal Media Library";
 $pageTitle .= isset($title) ? ' | ' . $title : '';
 
 $section = null;
+$action = null;
 
 if (isset($page)) {
     $section = $page;
@@ -19,7 +20,7 @@ include("inc/header.php");
     <div class="wrapper">
         <div class="pull-right">
             <a href="<?= '/' . $page . '/create' ?>" type="button" class="btn btn-success">
-                <span class="fa fa-plus fa-fw"></span> Insert new movie
+                <span class="fa fa-plus fa-fw"></span> Insert new item
             </a>
         </div>
         <ul class="catalog">

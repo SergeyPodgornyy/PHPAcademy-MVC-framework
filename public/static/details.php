@@ -4,6 +4,7 @@ $pageTitle = "Personal Media Library";
 $pageTitle .= isset($title) ? ' | ' . $title : '';
 
 $section = null;
+$action = isset($action) ? $action : null;
 
 if (isset($page)) {
     $section = $page;
@@ -23,14 +24,14 @@ include("inc/header.php");
     <div class="wrapper">
         <div class="pull-right">
             <a href="<?= '/' . $page . '/' . $item['id'] . '/edit' ?>" type="button" class="btn btn-warning">
-                <span class="fa fa-pencil"></span> Edit movie data
+                <span class="fa fa-pencil"></span> Edit data
             </a>
             <button type="button"
                     class="btn btn-danger"
-                    id="delete-movie"
+                    id="delete-item"
                     data-id="<?= $item['id'] ?>"
                     style="width: 150px">
-                <span class="fa fa-trash-o fa-fw"></span> Delete movie
+                <span class="fa fa-trash-o fa-fw"></span> Delete item
             </button>
         </div>
         <div class="clear-fix"></div>

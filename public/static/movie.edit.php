@@ -4,6 +4,7 @@ $pageTitle = "Personal Media Library";
 $pageTitle .= isset($title) ? ' | ' . $title : '';
 
 $section = null;
+$action = isset($action) ? $action : null;
 
 if (isset($page)) {
     $section = $page;
@@ -18,7 +19,7 @@ include("inc/header.php");
 <div class="section page">
     <div class="wrapper">
         <h1><?= isset($title) ? $title : '' ?></h1>
-        <form>
+        <form data-id="<?= isset($item['id']) ? $item['id'] : '' ?>">
             <table>
                 <tr>
                     <th>
@@ -44,10 +45,10 @@ include("inc/header.php");
                 </tr>
                 <tr>
                     <th>
-                        <label for="genres">Genre <span class="required">(required)</span></label>
+                        <label for="genre">Genre <span class="required">(required)</span></label>
                     </th>
                     <td>
-                        <select id="genres" name="genres" data-placeholder="Select One" class="chosen-select">
+                        <select id="genre" name="genre" data-placeholder="Select One" class="chosen-select">
                             <?php foreach ($genres as $genre): ?>
                                 <option value="<?= $genre['id'] ?>"
                                     <?= isset($item['genre_id']) && $item['genre_id'] == $genre['id']
@@ -91,7 +92,7 @@ include("inc/header.php");
                 </tr>
                 <tr>
                     <th>
-                        <label for="casts">Casts</label>
+                        <label for="casts">Casts <span class="required">(required)</span></label>
                     </th>
                     <td>
                         <select id="casts" name="casts" multiple data-placeholder="Select Stars" class="chosen-select">
@@ -107,16 +108,9 @@ include("inc/header.php");
                     </td>
                 </tr>
             </table>
-            <input type="submit" value="Create">
+            <input type="submit" value="<?= isset($item) ? 'Update' : 'Create' ?>">
         </form>
     </div>
 </div>
-
-<script type="text/javascript">
-    $('#genres').chosen({width: '100%'});
-    $('#format').chosen({width: '100%'});
-    $('#director').chosen({width: '100%'});
-    $('#casts').chosen({width: '100%'});
-</script>
 
 <?php include("inc/footer.php"); ?>

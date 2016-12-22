@@ -39,7 +39,21 @@ class Create extends \Service\Base
             'Stars'     => [],
         ];
 
-        $movieId = \Model\Movie::create($params);
+        try {
+            \Model\Utils\Transaction::beginTransaction();
+
+            // ============= Create Movie data ==========================
+            $movieId = \Model\Movie::create($params);
+            foreach ($params['Stars'] as $star) {
+                \Model\Movie::addStar($movieId, $star);
+            }
+            // =========== End Create Movie data ========================
+
+            \Model\Utils\Transaction::commitTransaction();
+        } catch (\Exception $e) {
+            \Model\Utils\Transaction::rollbackTransaction();
+            throw $e;
+        }
 
         return [
             'Status'    => 1,

@@ -17,7 +17,7 @@ class AppFactory
         $hasPermission = [$token, 'check'];
 
         // Define routes
-        $app->get('/library', function () use ($app) {
+        $app->get('/', function () use ($app) {
             $app->render('index.php');
         });
         $movie = new \Controller\Movie($app);
