@@ -18,6 +18,7 @@ include("inc/header.php");
 
 <div class="section catalog page">
     <div class="wrapper">
+        <?php // TODO: Add breadcrumbs ?>
         <div class="pull-right">
             <a href="<?= '/' . $page . '/create' ?>" type="button" class="btn btn-success">
                 <span class="fa fa-plus fa-fw"></span> Insert new item
@@ -33,6 +34,7 @@ include("inc/header.php");
                 </li>
             <?php endforeach; ?>
         </ul>
+        <?php // TODO: implement pagination ?>
     </div>
 </div>
 

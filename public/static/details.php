@@ -22,6 +22,7 @@ include("inc/header.php");
 
 <div class="section page">
     <div class="wrapper">
+        <?php // TODO: Add breadcrumbs ?>
         <div class="pull-right">
             <a href="<?= '/' . $page . '/' . $item['id'] . '/edit' ?>" type="button" class="btn btn-warning">
                 <span class="fa fa-pencil"></span> Edit data

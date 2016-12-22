@@ -24,6 +24,7 @@ include("inc/header.php");
                         </li>
                     <?php endforeach; ?>
                 </ul>
+                <?php // TODO: implement pagination ?>
             </div>
         </div>
 
