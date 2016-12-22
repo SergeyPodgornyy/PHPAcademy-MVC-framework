@@ -67,6 +67,7 @@ include("inc/header.php");
                     <td>
                         <?php $format = isset($item['format']) ? $item['format'] : null; ?>
                         <select id="format" name="format" data-placeholder="Select One" class="chosen-select">
+                            <option value="">None</option>
                             <option value="DVD" <?= $format == "DVD" ? "selected" : ""; ?>>DVD</option>
                             <option value="Blu-Ray" <?= $format == "Blu-Ray" ? "selected" : ""; ?>>Blu-Ray</option>
                             <option value="VHS" <?= $format == "VHS" ? "selected" : ""; ?>>VHS</option>

@@ -9,6 +9,8 @@ function Movie() {
             var itemId = $(e.target).data('id');
             $(e.target).attr('disabled', true);
 
+            // TODO: ask confiramtion before deleting
+
             $.deleteJSON('/api/movies/' + itemId, [], function(res) {
                 if (res.Status == 1) {
                     var successBlock = ''
@@ -52,9 +54,11 @@ function Movie() {
                 Year: $('#year').val(),
                 Genre: $('#genre').val(),
                 Director: $('#director').val(),
-                Format: $('#format').val(),
+                Format: $('#format').val().length ? $('#format').val() : undefined,
                 Stars: $('#casts').val(),
             };
+
+            // TODO: implement validation before send data to server
 
             $.postJSON('/api/movies', params, function(res) {
                 if (res.Status == 1) {
@@ -100,9 +104,11 @@ function Movie() {
                 Year: $('#year').val(),
                 Genre: $('#genre').val(),
                 Director: $('#director').val(),
-                Format: $('#format').val(),
+                Format: $('#format').val().length ? $('#format').val() : undefined,
                 Stars: $('#casts').val(),
             };
+
+            // TODO: implement validation before send data to server
 
             $.postJSON('/api/movies/' + itemId, params, function(res) {
                 if (res.Status == 1) {

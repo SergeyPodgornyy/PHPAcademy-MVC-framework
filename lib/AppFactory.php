@@ -11,15 +11,17 @@ class AppFactory
         $app->config = $config;
 
         // Prepare middleware
-        $sessions = new \Controller\Session($app);
-        $isAuth = [$sessions, 'check'];
-        $token = new \Controller\Token($app);
-        $hasPermission = [$token, 'check'];
+        // TODO: implement some middleware, when registration will be implemented
+        // $sessions = new \Controller\Session($app);
+        // $isAuth = [$sessions, 'check'];
+        // $token = new \Controller\Token($app);
+        // $hasPermission = [$token, 'check'];
+        // end TODO
 
         // Define routes
-        $app->get('/', function () use ($app) {
-            $app->render('index.php');
-        });
+        $dashboard = new \Controller\Dashboard($app);
+        $app->get('/', [$dashboard, 'getIndex']);
+
         $movie = new \Controller\Movie($app);
         $app->get('/movies/', [$movie, 'getIndex']);
         $app->get('/movies/create/', [$movie, 'getCreate']);
@@ -64,6 +66,8 @@ class AppFactory
         $app->post('/api/casts/', [$cast, 'create']);
         $app->post('/api/casts/:id', [$cast, 'update']);
         $app->delete('/api/casts/:id', [$cast, 'delete']);
+
+        // TODO: implement services+views to create/update genres, casts, directors...
 
         return self::$instance = $app;
     }

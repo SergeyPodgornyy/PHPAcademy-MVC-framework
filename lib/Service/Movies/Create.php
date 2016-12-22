@@ -31,6 +31,7 @@ class Create extends Base
             'Director'  => ['required', ['one_of' => $directorIds]],
             'Format'    => ['not_empty', ['one_of' => ['DVD', 'Blu-Ray', 'VHS']]],
             'Stars'     => ['required', ['list_of' => ['one_of' => $castIds]]],
+            // TODO: upload images for movies via AJAX
         ];
 
         return Validator::validate($params, $rules);
