@@ -41,6 +41,15 @@ class Update extends Base
 
     public function execute(array $params)
     {
+        $params += [
+            'Title'     => '',
+            'Year'      => null,
+            'Format'    => '',
+            'Genre'     => null,
+            'Director'  => null,
+            'Stars'     => [],
+        ];
+
         $movie = Movie::findById($params['Id']);
         if (!$movie) {
             throw new X([

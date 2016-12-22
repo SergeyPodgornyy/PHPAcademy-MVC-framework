@@ -20,7 +20,7 @@ class Dashboard extends Base
 
         if ($movies['Status'] == 1) {
             // Add movies to all items list
-            $items = array_merge($items, array_map(function($movie) {
+            $items = array_merge($items, array_map(function ($movie) {
                 // Add `category` key to each movie
                 return array_merge($movie, ['category' => 'movies']);
             }, $movies['Movies']));
