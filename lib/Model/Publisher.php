@@ -4,13 +4,13 @@ namespace Model;
 
 use Model\Driver\Engine;
 
-class Genre implements ModelInterface
+class Publisher implements ModelInterface
 {
 
     use Traits\BaseFunctions;
 
     const CONNECTION_NAME = 'framework';
-    const TABLE_NAME = 'genres';
+    const TABLE_NAME = 'publishers';
 
     /**
      * Create connection
@@ -28,7 +28,7 @@ class Genre implements ModelInterface
     }
 
     /**
-     * Return list of genres
+     * Return list of publishers
      *
      * @param   array   $params
      * @return  bool
@@ -37,13 +37,12 @@ class Genre implements ModelInterface
     {
         $connection = self::getConnection();
 
-        $where = isset($params['Type']) ? " WHERE type='$params[Type]' " : '';
         $limit = isset($params['Limit']) ? " LIMIT $params[Limit] " : '';
         $offset = isset($params['Offset']) ? " OFFSET $params[Offset] " : '';
         $order = isset($params['SortField']) && isset($params['SortOrder']) ?
             " ORDER BY $params[SortField] $params[SortOrder] " : '';
 
-        $query = "SELECT * FROM ".self::TABLE_NAME.$where.$order.$limit.$offset;
+        $query = "SELECT * FROM ".self::TABLE_NAME.$order.$limit.$offset;
 
         $statement = $connection->prepare($query);
 
@@ -57,7 +56,7 @@ class Genre implements ModelInterface
     }
 
     /**
-     * Search genres by name
+     * Search publisher by name
      *
      * @param   array   $params
      * @return  bool
@@ -69,18 +68,14 @@ class Genre implements ModelInterface
         $whereName = isset($params['Search']) && $params['Search']
             ? $params['Search']
             : null;
-        $whereType = isset($params['Type']) && $params['Type']
-            ? $params['Type']
-            : null;
 
         $limit = isset($params['Limit']) ? " LIMIT $params[Limit] " : '';
         $offset = isset($params['Offset']) ? " OFFSET $params[Offset] " : '';
         $order = isset($params['SortField']) && isset($params['SortOrder']) ?
             " ORDER BY $params[SortField] $params[SortOrder] " : '';
 
-        $where = $whereName
+        $where = $whereSurname
             ? ' WHERE '.self::TABLE_NAME.'.name LIKE "%:name%" '
-                . ($whereType ? " AND type='$type' " : '')
             : '';
 
         $query = "SELECT ".self::TABLE_NAME.".* FROM ".self::TABLE_NAME.$where.$order.$limit.$offset;
@@ -99,16 +94,15 @@ class Genre implements ModelInterface
     }
 
     /**
-     * Count all directors
+     * Count all publishers
      *
      * @return bool
      */
-    public static function count($type = null)
+    public static function count()
     {
         $connection = self::getConnection();
 
-        $where = $type ? " WHERE type='$type' " : '';
-        $query = "SELECT count(*) as sum FROM ".self::TABLE_NAME.$where;
+        $query = "SELECT count(*) as sum FROM ".self::TABLE_NAME;
 
         $statement = $connection->prepare($query);
 
@@ -134,12 +128,8 @@ class Genre implements ModelInterface
         $whereName = isset($params['Search']) && $params['Search']
             ? $params['Search']
             : null;
-        $whereType = isset($params['Type']) && $params['Type']
-            ? $params['Type']
-            : null;
-        $where = $whereName
+        $where = $whereSurname
             ? ' WHERE '.self::TABLE_NAME.'.name LIKE "%:name%" '
-                . ($whereType ? " AND type='$type' " : '')
             : '';
 
         $query = "SELECT count(*) as sum FROM ".self::TABLE_NAME.$where;
@@ -160,15 +150,15 @@ class Genre implements ModelInterface
     /**
      * Transform database columns to Camel Case
      *
-     * @param   array $genre
+     * @param   array $director
      * @return  array
      */
-    public static function toCamelCase($genre)
+    public static function toCamelCase($director)
     {
         return [
-            'Id'    => $genre['id'],
-            'Name'  => $genre['name'],
-            'Type'  => $genre['type'],
+            'Id'        => $director['id'],
+            'Name'      => $director['name'],
+            'Surname'   => $director['surname'],
         ];
     }
 }

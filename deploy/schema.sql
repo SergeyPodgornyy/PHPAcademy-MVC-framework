@@ -2,8 +2,7 @@
 -- Table structure for table `directors`
 --
 
-DROP TABLE IF EXISTS `directors`;
-CREATE TABLE `directors` (
+CREATE TABLE IF NOT EXISTS `directors` (
   `id`      int(32)     NOT NULL        AUTO_INCREMENT,
   `name`    varchar(20) DEFAULT NULL,
   `surname` varchar(20) NOT NULL,
@@ -12,11 +11,21 @@ CREATE TABLE `directors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Table structure for table `publishers`
+--
+
+CREATE TABLE IF NOT EXISTS `publishers` (
+  `id`      int(32)     NOT NULL        AUTO_INCREMENT,
+  `name`    varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `publisher_name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
 -- Table structure for table `genres`
 --
 
-DROP TABLE IF EXISTS `genres`;
-CREATE TABLE `genres` (
+CREATE TABLE IF NOT EXISTS `genres` (
   `id`      int(32)     NOT NULL        AUTO_INCREMENT,
   `name`    varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -27,8 +36,7 @@ CREATE TABLE `genres` (
 -- Table structure for table `movies`
 --
 
-DROP TABLE IF EXISTS `movies`;
-CREATE TABLE `movies` (
+CREATE TABLE IF NOT EXISTS `movies` (
   `id`              int(32)         NOT NULL AUTO_INCREMENT,
   `title`           varchar(100)    NOT NULL,
   `year`            int(11)         NOT NULL,
@@ -38,19 +46,40 @@ CREATE TABLE `movies` (
   `director_id`     int(32)         DEFAULT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`genre_id`)
-        REFERENCES `genres`(`id`)
-        ON DELETE SET NULL,
+    REFERENCES `genres`(`id`)
+    ON DELETE SET NULL,
   FOREIGN KEY (`director_id`)
-        REFERENCES `directors`(`id`)
-        ON DELETE SET NULL
+    REFERENCES `directors`(`id`)
+    ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `books`
+--
+
+CREATE TABLE IF NOT EXISTS `books` (
+  `id`              int(32)         NOT NULL AUTO_INCREMENT,
+  `title`           varchar(100)    NOT NULL,
+  `isbn`            varchar(64)     DEFAULT NULL,
+  `year`            int(11)         NOT NULL,
+  `format`          enum('Paperback', 'Ebook', 'Hardcover', 'Audio')   NOT NULL,
+  `image`           varchar(255)    NOT NULL,
+  `genre_id`        int(32)         DEFAULT NULL,
+  `publisher_id`    int(32)         DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`genre_id`)
+    REFERENCES `genres`(`id`)
+    ON DELETE SET NULL,
+  FOREIGN KEY (`publisher_id`)
+    REFERENCES `publishers`(`id`)
+    ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `casts`
 --
 
-DROP TABLE IF EXISTS `casts`;
-CREATE TABLE `casts` (
+CREATE TABLE IF NOT EXISTS `casts` (
   `id`      int(32)     NOT NULL        AUTO_INCREMENT,
   `name`    varchar(20) DEFAULT NULL,
   `surname` varchar(20) NOT NULL,
@@ -62,16 +91,43 @@ CREATE TABLE `casts` (
 -- Table structure for table `movie_casts`
 --
 
-DROP TABLE IF EXISTS `movie_casts`;
-CREATE TABLE `movie_casts` (
+CREATE TABLE IF NOT EXISTS `movie_casts` (
   `movie_id`   int(32)  NOT NULL,
   `cast_id`    int(32)  NOT NULL,
   PRIMARY KEY (`movie_id`,`cast_id`),
   FOREIGN KEY (`movie_id`)
-        REFERENCES `movies`(`id`)
-        ON DELETE CASCADE,
+    REFERENCES `movies`(`id`)
+    ON DELETE CASCADE,
   FOREIGN KEY (`cast_id`)
-        REFERENCES `casts`(`id`)
-        ON DELETE CASCADE
+    REFERENCES `casts`(`id`)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `authors`
+--
+
+CREATE TABLE IF NOT EXISTS `authors` (
+  `id`      int(32)     NOT NULL        AUTO_INCREMENT,
+  `name`    varchar(20) DEFAULT NULL,
+  `surname` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `author_full_name` (`name`,`surname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `book_authors`
+--
+
+CREATE TABLE IF NOT EXISTS `book_authors` (
+  `book_id`     int(32)  NOT NULL,
+  `author_id`   int(32)  NOT NULL,
+  PRIMARY KEY (`book_id`,`author_id`),
+  FOREIGN KEY (`book_id`)
+    REFERENCES `books`(`id`)
+    ON DELETE CASCADE,
+  FOREIGN KEY (`author_id`)
+    REFERENCES `authors`(`id`)
+    ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

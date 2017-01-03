@@ -1,8 +1,8 @@
 <?php
 
-namespace Service\Genre;
+namespace Service\Publisher;
 
-use Model\Genre;
+use Model\Publisher;
 use Service\Base;
 use Service\Validator;
 
@@ -11,7 +11,6 @@ class Index extends Base
     public function validate($params)
     {
         $rules = [
-            'Type'      => ['not_empty', ['one_of' => ['movie', 'book', 'music']]],
             'Search'    => ['trim', ['max_length' => 100]],
 
             'Limit'     => ['integer', ['min_number' => 0]],
@@ -31,19 +30,18 @@ class Index extends Base
             'SortOrder' => 'asc',
         ];
 
-        $type = isset($params['Type']) ? $params['Type'] : null;
-        $total = $filteredRecords = Genre::count($type);
+        $total = $filteredRecords = Publisher::count();
 
         if (isset($params['Search'])) {
-            $filteredRecords = Genre::countFiltered($params);
-            $genres = Genre::search($params);
+            $filteredRecords = Publisher::countFiltered($params);
+            $publishers = Publisher::search($params);
         } else {
-            $genres = Genre::index($params);
+            $publishers = Publisher::index($params);
         }
 
         return [
             'Status'            => 1,
-            'Genres'            => $genres,
+            'Publishers'        => $publishers,
             'Total'             => $total,
             'FilteredRecords'   => $filteredRecords,
         ];

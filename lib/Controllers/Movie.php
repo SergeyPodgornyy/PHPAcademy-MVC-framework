@@ -94,7 +94,7 @@ class Movie extends Base
         }, true);
 
         $genres = $this->run(function () {
-            return $this->action('Service\Genre\Index')->run([]);
+            return $this->action('Service\Genre\Index')->run(['Type' => 'movie']);
         }, true);
 
         $directors = $this->run(function () {
@@ -123,7 +123,7 @@ class Movie extends Base
         }, true);
 
         $genres = $this->run(function () {
-            return $this->action('Service\Genre\Index')->run([]);
+            return $this->action('Service\Genre\Index')->run(['Type' => 'movie']);
         }, true);
 
         $directors = $this->run(function () {

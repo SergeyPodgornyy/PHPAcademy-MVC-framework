@@ -28,7 +28,7 @@ include("inc/header.php");
             <?php foreach ($items as $item) : ?>
                 <li>
                     <a href='<?= '/' . $page . '/' . $item['id'] ?>'>
-                        <img src="/static/<?= $item['poster'] ?: 'img/300x300.gif' ?>" alt="<?= $item['title'] ?>">
+                        <img src="/static/<?= $item['image'] ?: 'img/300x300.gif' ?>" alt="<?= $item['title'] ?>">
                         <p>View Details</p>
                     </a>
                 </li>

@@ -28,14 +28,13 @@ class AppFactory
         $app->get('/movies/:id', [$movie, 'getShow']);
         $app->get('/movies/:id/edit', [$movie, 'getEdit']);
 
-        // TODO `books` and `music` ============================================
-        $app->get('/books/', function () use ($app) {
-            $app->render('catalog.php', [
-                'page'  => 'books',
-                'title' => 'Books',
-                'items' => [],
-            ]);
-        });
+        $book = new \Controller\Book($app);
+        $app->get('/books/', [$book, 'getIndex']);
+        $app->get('/books/create/', [$book, 'getCreate']);
+        $app->get('/books/:id', [$book, 'getShow']);
+        $app->get('/books/:id/edit', [$book, 'getEdit']);
+
+        // TODO `music` ============================================
         $app->get('/music/', function () use ($app) {
             $app->render('catalog.php', [
                 'page'  => 'music',
@@ -59,6 +58,12 @@ class AppFactory
         $app->post('/api/movies/', [$movie, 'create']);
         $app->post('/api/movies/:id', [$movie, 'update']);
         $app->delete('/api/movies/:id', [$movie, 'delete']);
+
+        $app->get('/api/books/', [$book, 'index']);
+        $app->get('/api/books/:id', [$book, 'show']);
+        $app->post('/api/books/', [$book, 'create']);
+        $app->post('/api/books/:id', [$book, 'update']);
+        $app->delete('/api/books/:id', [$book, 'delete']);
 
         $cast = new \Controller\Cast($app);
         $app->get('/api/casts/', [$cast, 'index']);

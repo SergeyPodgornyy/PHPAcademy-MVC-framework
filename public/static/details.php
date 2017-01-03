@@ -38,7 +38,7 @@ include("inc/header.php");
         <div class="clear-fix"></div>
         <div class="media-picture">
             <span>
-                <img src="/static/<?= $item["poster"] ?: 'img/300x300.gif' ?>" alt="<?= $item["title"];?>">
+                <img src="/static/<?= $item["image"] ?: 'img/300x300.gif' ?>" alt="<?= $item["title"];?>">
             </span>
         </div>
         <div class="media-details">

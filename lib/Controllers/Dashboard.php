@@ -14,6 +14,7 @@ class Dashboard extends Base
         ];
         $items = [];
 
+        // ************ Get movies ************
         $movies = $this->run(function () use ($data) {
             return $this->action('Service\Movie\Index')->run($data);
         }, true);
@@ -26,10 +27,23 @@ class Dashboard extends Base
             }, $movies['Movies']));
         }
 
-        // TODO: implement books and music
-        // $books = [];
+        // ************ Get books ************
+        $books = $this->run(function () use ($data) {
+            return $this->action('Service\Book\Index')->run($data);
+        }, true);
+
+        if ($books['Status'] == 1) {
+            // Add books to all items list
+            $items = array_merge($items, array_map(function ($movie) {
+                // Add `category` key to each movie
+                return array_merge($movie, ['category' => 'books']);
+            }, $books['Books']));
+        }
+
+        // TODO: implement music
         // $music = [];
 
+        shuffle($items);
         $this->app->render('index.php', [
             'title'     => 'Home',
             'items'     => $items,

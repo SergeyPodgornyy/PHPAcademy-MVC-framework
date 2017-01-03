@@ -10,7 +10,7 @@ function main($options) {
     if (isset($options['help']) || isset($options['h'])) help();
 
     $appConf = include_once __DIR__ . '/../etc/app-conf.php';
-    $confInst = (isset($options['test']) || isset($options['t'])) ? 'test': 'main';
+    $confInst = (isset($options['test']) || isset($options['t'])) ? 'test' : 'main';
     $dbConf = $appConf['dbConfig'][$confInst];
 
     if (isset($options['force']) || isset($options['f'])) {

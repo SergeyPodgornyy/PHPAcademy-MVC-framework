@@ -29,12 +29,14 @@ class Show extends Base
                 'Message' => 'Movie does not exists'
             ]);
         }
+
+        $movieCasts = Movie::getMoviesCasts($movie['id']);
         $movie['casts'] = array_map(function ($cast) {
             return $cast['name'] . ' ' . $cast['surname'];
-        }, Movie::getMoviesCasts($movie['id']));
+        }, $movieCasts);
         $movie['cast_ids'] = array_map(function ($cast) {
             return $cast['id'];
-        }, Movie::getMoviesCasts($movie['id']));
+        }, $movieCasts);
 
         return [
             'Status'    => 1,

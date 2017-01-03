@@ -1,8 +1,8 @@
 <?php
 
-namespace Service\Genre;
+namespace Service\Author;
 
-use Model\Genre;
+use Model\Author;
 use Service\Base;
 use Service\Validator;
 
@@ -11,13 +11,12 @@ class Index extends Base
     public function validate($params)
     {
         $rules = [
-            'Type'      => ['not_empty', ['one_of' => ['movie', 'book', 'music']]],
             'Search'    => ['trim', ['max_length' => 100]],
 
             'Limit'     => ['integer', ['min_number' => 0]],
             'Offset'    => ['integer', ['min_number' => 0]],
 
-            'SortField' => ['one_of' => ['id', 'name']],
+            'SortField' => ['one_of' => ['id', 'surname']],
             'SortOrder' => ['one_of' => ['asc', 'desc']],
         ];
 
@@ -31,19 +30,18 @@ class Index extends Base
             'SortOrder' => 'asc',
         ];
 
-        $type = isset($params['Type']) ? $params['Type'] : null;
-        $total = $filteredRecords = Genre::count($type);
+        $total = $filteredRecords = Author::count();
 
         if (isset($params['Search'])) {
-            $filteredRecords = Genre::countFiltered($params);
-            $genres = Genre::search($params);
+            $filteredRecords = Author::countFiltered($params);
+            $authors = Author::search($params);
         } else {
-            $genres = Genre::index($params);
+            $authors = Author::index($params);
         }
 
         return [
             'Status'            => 1,
-            'Genres'            => $genres,
+            'Authors'           => $authors,
             'Total'             => $total,
             'FilteredRecords'   => $filteredRecords,
         ];

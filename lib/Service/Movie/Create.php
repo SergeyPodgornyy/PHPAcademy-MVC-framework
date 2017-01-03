@@ -16,7 +16,7 @@ class Create extends Base
     {
         $genreIds = array_map(function ($genre) {
             return $genre['id'];
-        }, Genre::index([]));
+        }, Genre::index(['Type' => 'movie']));
         $directorIds = array_map(function ($director) {
             return $director['id'];
         }, Director::index([]));

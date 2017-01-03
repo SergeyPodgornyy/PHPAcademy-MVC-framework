@@ -1,11 +1,11 @@
 <?php
 
-namespace Service\Movie;
+namespace Service\Book;
 
-use Model\Cast;
-use Model\Director;
+use Model\Author;
+use Model\Publisher;
 use Model\Genre;
-use Model\Movie;
+use Model\Book;
 use Model\Utils\Transaction;
 use Service\Base;
 use Service\Validator;
@@ -17,22 +17,23 @@ class Update extends Base
     {
         $genreIds = array_map(function ($genre) {
             return $genre['id'];
-        }, Genre::index([]));
-        $directorIds = array_map(function ($director) {
-            return $director['id'];
-        }, Director::index([]));
-        $castIds = array_map(function ($cast) {
-            return $cast['id'];
-        }, Cast::index([]));
+        }, Genre::index(['Type' => 'book']));
+        $publisherIds = array_map(function ($publisher) {
+            return $publisher['id'];
+        }, Publisher::index([]));
+        $authorIds = array_map(function ($author) {
+            return $author['id'];
+        }, Author::index([]));
 
         $rules = [
             'Id'        => ['required', 'positive_integer'],
             'Title'     => ['required', ['max_length' => 100]],
+            'ISBN'      => ['required', ['max_length' => 100]],
             'Year'      => ['required', 'positive_integer'],
             'Genre'     => ['required', ['one_of' => $genreIds]],
-            'Director'  => ['required', ['one_of' => $directorIds]],
-            'Format'    => ['not_empty', ['one_of' => ['DVD', 'Blu-Ray', 'VHS']]],
-            'Stars'     => ['required', ['list_of' => ['one_of' => $castIds]]],
+            'Publisher' => ['not_empty', ['one_of' => $publisherIds]],
+            'Format'    => ['not_empty', ['one_of' => ['Paperback', 'Ebook', 'Hardcover', 'Audio']]],
+            'Authors'   => ['required', ['list_of' => ['one_of' => $authorIds]]],
             // TODO: upload images for movies via AJAX
         ];
 
@@ -43,34 +44,35 @@ class Update extends Base
     {
         $params += [
             'Title'     => '',
+            'ISBN'      => '',
             'Year'      => null,
             'Format'    => '',
             'Genre'     => null,
-            'Director'  => null,
-            'Stars'     => [],
+            'Publisher' => null,
+            'Authors'     => [],
         ];
 
-        $movie = Movie::findById($params['Id']);
+        $movie = Book::findById($params['Id']);
         if (!$movie) {
             throw new X([
                 'Type'    => 'FORMAT_ERROR',
                 'Fields'  => ['Id' => 'WRONG'],
-                'Message' => 'Movie does not exists'
+                'Message' => 'Book does not exists'
             ]);
         }
 
         try {
             Transaction::beginTransaction();
 
-            // ============= Update Movie data ==========================
-            $updatedMovie = array_merge(
-                Movie::toCamelCase($movie),
+            // ============= Update Book data ==========================
+            $updatedBook = array_merge(
+                Book::toCamelCase($movie),
                 $params
             );
-            Movie::update($params['Id'], $updatedMovie);
-            Movie::removeStars($params['Id']);
-            Movie::addStars($params['Id'], $params['Stars']);
-            // =========== End Update Movie data ========================
+            Book::update($params['Id'], $updatedBook);
+            Book::removeAuthors($params['Id']);
+            Book::addAuthors($params['Id'], $params['Authors']);
+            // =========== End Update Book data ========================
 
             Transaction::commitTransaction();
         } catch (\Exception $e) {
@@ -80,7 +82,7 @@ class Update extends Base
 
         return [
             'Status'    => 1,
-            'Movie'     => $updatedMovie,
+            'Book'      => $updatedBook,
         ];
     }
 }

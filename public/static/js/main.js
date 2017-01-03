@@ -5,6 +5,9 @@ $(document).ready(function() {
         case 'movies':
             var templateCtrl = new Movie();
             break;
+        case 'books':
+            var templateCtrl = new Book();
+            break;
         default:
             var templateCtrl = new Dashboard();
             break;
