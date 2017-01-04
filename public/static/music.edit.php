@@ -68,42 +68,25 @@ include("inc/header.php");
                         <?php $format = isset($item['format']) ? $item['format'] : null; ?>
                         <select id="format" name="format" data-placeholder="Select One" class="chosen-select">
                             <option value="">None</option>
-                            <option value="DVD" <?= $format == "DVD" ? "selected" : ""; ?>>DVD</option>
-                            <option value="Blu-Ray" <?= $format == "Blu-Ray" ? "selected" : ""; ?>>Blu-Ray</option>
-                            <option value="Streaming" <?= $format == "Streaming" ? "selected" : ""; ?>>Streaming</option>
-                            <option value="VHS" <?= $format == "VHS" ? "selected" : ""; ?>>VHS</option>
+                            <option value="Cassette" <?= $format == "Cassette" ? "selected" : ""; ?>>Cassette</option>
+                            <option value="CD" <?= $format == "CD" ? "selected" : ""; ?>>CD</option>
+                            <option value="MP3" <?= $format == "MP3" ? "selected" : ""; ?>>MP3</option>
+                            <option value="Vinyl" <?= $format == "Vinyl" ? "selected" : ""; ?>>Vinyl</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        <label for="director">Director <span class="required">(required)</span></label>
+                        <label for="artist">Artist <span class="required">(required)</span></label>
                     </th>
                     <td>
-                        <select id="director" name="director" data-placeholder="Select One" class="chosen-select">
-                            <?php foreach ($directors as $director): ?>
-                                <option value="<?= $director['id'] ?>"
-                                    <?= isset($item['director_id']) && $item['director_id'] == $director['id']
+                        <select id="artist" name="artist" data-placeholder="Select One" class="chosen-select">
+                            <?php foreach ($artists as $artist): ?>
+                                <option value="<?= $artist['id'] ?>"
+                                    <?= isset($item['artist_id']) && $item['artist_id'] == $artist['id']
                                         ? "selected"
                                         : ""; ?>>
-                                    <?= $director['name'] . ' ' . $director['surname'] ?>
-                                </option>
-                            <?php endforeach ?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label for="casts">Casts <span class="required">(required)</span></label>
-                    </th>
-                    <td>
-                        <select id="casts" name="casts" multiple data-placeholder="Select Stars" class="chosen-select">
-                            <?php foreach ($stars as $star): ?>
-                                <option value="<?= $star['id'] ?>"
-                                    <?= isset($item['cast_ids']) && in_array($star['id'], $item['cast_ids'])
-                                        ? "selected"
-                                        : ""; ?>>
-                                    <?= $star['name'] . ' ' . $star['surname'] ?>
+                                    <?= $artist['name'] . ' ' . $artist['surname'] ?>
                                 </option>
                             <?php endforeach ?>
                         </select>

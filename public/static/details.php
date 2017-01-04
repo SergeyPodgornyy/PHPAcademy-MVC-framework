@@ -86,7 +86,7 @@ include("inc/header.php");
                 <?php elseif (strtolower($page) === "music") : ?>
 
                     <tr>
-                        <th>Artists</th>
+                        <th>Artist</th>
                         <td><?= $item["artist"];?></td>
                     </tr>
 

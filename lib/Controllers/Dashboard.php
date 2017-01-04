@@ -34,16 +34,26 @@ class Dashboard extends Base
 
         if ($books['Status'] == 1) {
             // Add books to all items list
-            $items = array_merge($items, array_map(function ($movie) {
-                // Add `category` key to each movie
-                return array_merge($movie, ['category' => 'books']);
+            $items = array_merge($items, array_map(function ($book) {
+                // Add `category` key to each book
+                return array_merge($book, ['category' => 'books']);
             }, $books['Books']));
         }
 
-        // TODO: implement music
-        // $music = [];
+        // ************ Get music ************
+        $music = $this->run(function () use ($data) {
+            return $this->action('Service\Music\Index')->run($data);
+        }, true);
 
-        shuffle($items);
+        if ($music['Status'] == 1) {
+            // Add music to all items list
+            $items = array_merge($items, array_map(function ($music) {
+                // Add `category` key to each music item
+                return array_merge($music, ['category' => 'music']);
+            }, $music['Music']));
+        }
+
+        // shuffle($items);
         $this->app->render('index.php', [
             'title'     => 'Home',
             'items'     => $items,

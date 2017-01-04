@@ -6,6 +6,7 @@ use Model\Driver\Engine;
 
 class Genre implements ModelInterface
 {
+    // TODO: implement Memcached
 
     use Traits\BaseFunctions;
 

@@ -22,6 +22,18 @@ CREATE TABLE IF NOT EXISTS `publishers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Table structure for table `artists`
+--
+
+CREATE TABLE IF NOT EXISTS `artists` (
+  `id`      int(32)     NOT NULL        AUTO_INCREMENT,
+  `name`    varchar(20) DEFAULT NULL,
+  `surname` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `artist_full_name` (`name`,`surname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
 -- Table structure for table `genres`
 --
 
@@ -72,6 +84,27 @@ CREATE TABLE IF NOT EXISTS `books` (
     ON DELETE SET NULL,
   FOREIGN KEY (`publisher_id`)
     REFERENCES `publishers`(`id`)
+    ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `music`
+--
+
+CREATE TABLE IF NOT EXISTS `music` (
+  `id`              int(32)         NOT NULL AUTO_INCREMENT,
+  `title`           varchar(100)    NOT NULL,
+  `year`            int(11)         NOT NULL,
+  `format`          enum('Cassette', 'CD', 'MP3', 'Vinyl')   NOT NULL,
+  `image`           varchar(255)    NOT NULL,
+  `genre_id`        int(32)         DEFAULT NULL,
+  `artist_id`    int(32)         DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`genre_id`)
+    REFERENCES `genres`(`id`)
+    ON DELETE SET NULL,
+  FOREIGN KEY (`artist_id`)
+    REFERENCES `artists`(`id`)
     ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -34,15 +34,11 @@ class AppFactory
         $app->get('/books/:id', [$book, 'getShow']);
         $app->get('/books/:id/edit', [$book, 'getEdit']);
 
-        // TODO `music` ============================================
-        $app->get('/music/', function () use ($app) {
-            $app->render('catalog.php', [
-                'page'  => 'music',
-                'title' => 'Music',
-                'items' => [],
-            ]);
-        });
-        // end TODO ============================================================
+        $music = new \Controller\Music($app);
+        $app->get('/music/', [$music, 'getIndex']);
+        $app->get('/music/create/', [$music, 'getCreate']);
+        $app->get('/music/:id', [$music, 'getShow']);
+        $app->get('/music/:id/edit', [$music, 'getEdit']);
 
         // Test routes
         $app->get('/welcome/', function () use ($app) {
@@ -65,12 +61,25 @@ class AppFactory
         $app->post('/api/books/:id', [$book, 'update']);
         $app->delete('/api/books/:id', [$book, 'delete']);
 
+        $app->get('/api/music/', [$music, 'index']);
+        $app->get('/api/music/:id', [$music, 'show']);
+        $app->post('/api/music/', [$music, 'create']);
+        $app->post('/api/music/:id', [$music, 'update']);
+        $app->delete('/api/music/:id', [$music, 'delete']);
+
         $cast = new \Controller\Cast($app);
         $app->get('/api/casts/', [$cast, 'index']);
         $app->get('/api/casts/:id', [$cast, 'show']);
         $app->post('/api/casts/', [$cast, 'create']);
         $app->post('/api/casts/:id', [$cast, 'update']);
         $app->delete('/api/casts/:id', [$cast, 'delete']);
+
+        $author = new \Controller\Author($app);
+        $app->get('/api/authors/', [$author, 'index']);
+        $app->get('/api/authors/:id', [$author, 'show']);
+        $app->post('/api/authors/', [$author, 'create']);
+        $app->post('/api/authors/:id', [$author, 'update']);
+        $app->delete('/api/authors/:id', [$author, 'delete']);
 
         // TODO: implement services+views to create/update genres, casts, directors...
 

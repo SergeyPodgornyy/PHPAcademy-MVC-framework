@@ -34,7 +34,7 @@ class Update extends Base
             'Publisher' => ['not_empty', ['one_of' => $publisherIds]],
             'Format'    => ['not_empty', ['one_of' => ['Paperback', 'Ebook', 'Hardcover', 'Audio']]],
             'Authors'   => ['required', ['list_of' => ['one_of' => $authorIds]]],
-            // TODO: upload images for movies via AJAX
+            // TODO: upload images for books via AJAX
         ];
 
         return Validator::validate($params, $rules);

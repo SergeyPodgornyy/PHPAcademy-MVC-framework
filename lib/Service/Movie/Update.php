@@ -31,7 +31,7 @@ class Update extends Base
             'Year'      => ['required', 'positive_integer'],
             'Genre'     => ['required', ['one_of' => $genreIds]],
             'Director'  => ['required', ['one_of' => $directorIds]],
-            'Format'    => ['not_empty', ['one_of' => ['DVD', 'Blu-Ray', 'VHS']]],
+            'Format'    => ['not_empty', ['one_of' => ['DVD', 'Blu-Ray', 'Streaming', 'VHS']]],
             'Stars'     => ['required', ['list_of' => ['one_of' => $castIds]]],
             // TODO: upload images for movies via AJAX
         ];

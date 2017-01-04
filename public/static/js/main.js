@@ -8,6 +8,9 @@ $(document).ready(function() {
         case 'books':
             var templateCtrl = new Book();
             break;
+        case 'music':
+            var templateCtrl = new Music();
+            break;
         default:
             var templateCtrl = new Dashboard();
             break;

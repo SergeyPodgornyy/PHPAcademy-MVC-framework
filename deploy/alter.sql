@@ -8,3 +8,6 @@ ALTER TABLE `genres` ADD    `type`              enum(
                                                 )               DEFAULT 'movie';
 ALTER TABLE `genres` DROP INDEX `genre_name`;
 ALTER TABLE `genres` ADD UNIQUE INDEX `genre_name` (`name`,`type`);
+
+-- 2017-01-04 11:49:00
+ALTER TABLE `movies` CHANGE `format` `format`   enum('DVD', 'VHS', 'Streaming', 'Blu-Ray')   NOT NULL;
