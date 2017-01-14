@@ -1,6 +1,6 @@
 <?php
 
-$pageTitle = "Personal Media Library";
+$pageTitle = gettext("Personal Media Library");
 $pageTitle .= isset($title) ? ' | ' . $title : '';
 
 $section = null;
@@ -21,7 +21,7 @@ include("inc/header.php");
         <?php // TODO: Add breadcrumbs ?>
         <div class="pull-right">
             <a href="<?= '/' . $page . '/create' ?>" type="button" class="btn btn-success">
-                <span class="fa fa-plus fa-fw"></span> Insert new item
+                <span class="fa fa-plus fa-fw"></span> <?= gettext('Insert new item') ?>
             </a>
         </div>
         <ul class="catalog">
@@ -29,7 +29,7 @@ include("inc/header.php");
                 <li>
                     <a href='<?= '/' . $page . '/' . $item['id'] ?>'>
                         <img src="/static/<?= $item['image'] ?: 'img/300x300.gif' ?>" alt="<?= $item['title'] ?>">
-                        <p>View Details</p>
+                        <p><?= gettext('View Details') ?></p>
                     </a>
                 </li>
             <?php endforeach; ?>

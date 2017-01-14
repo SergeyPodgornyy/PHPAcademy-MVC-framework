@@ -65,7 +65,7 @@ class Music extends Base
 
         $this->app->render('catalog.php', [
             'page'  => 'music',
-            'title' => 'Music',
+            'title' => gettext('Music'),
             'items' => $res['Status'] == 1 ? $res['Music'] : [],
         ]);
     }
@@ -100,7 +100,7 @@ class Music extends Base
         $this->app->render('music.edit.php', [
             'page'      => 'music',
             'action'    => 'create',
-            'title'     => 'Insert new music',
+            'title'     => gettext('Insert new music'),
             'genres'    => $genres['Status'] == 1 ? $genres['Genres'] : [],
             'artists'   => $artists['Status'] == 1 ? $artists['Artists'] : [],
         ]);

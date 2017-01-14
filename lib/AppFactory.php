@@ -22,6 +22,9 @@ class AppFactory
         $dashboard = new \Controller\Dashboard($app);
         $app->get('/', [$dashboard, 'getIndex']);
 
+        $lang = new \Controller\Language($app);
+        $app->post('/lang', [$lang, 'create']);
+
         $movie = new \Controller\Movie($app);
         $app->get('/movies/', [$movie, 'getIndex']);
         $app->get('/movies/create/', [$movie, 'getCreate']);

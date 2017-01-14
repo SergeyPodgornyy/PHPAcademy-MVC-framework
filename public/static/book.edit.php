@@ -1,6 +1,6 @@
 <?php
 
-$pageTitle = "Personal Media Library";
+$pageTitle = gettext("Personal Media Library");
 $pageTitle .= isset($title) ? ' | ' . $title : '';
 
 $section = null;
@@ -23,7 +23,7 @@ include("inc/header.php");
             <table>
                 <tr>
                     <th>
-                        <label for="title">Title <span class="required">(required)</span></label>
+                        <label for="title"><?= gettext("Title") ?> <span class="required">(<?= gettext("required") ?>)</span></label>
                     </th>
                     <td>
                         <input type="text"
@@ -34,7 +34,7 @@ include("inc/header.php");
                 </tr>
                 <tr>
                     <th>
-                        <label for="isbn">ISBN <span class="required">(required)</span></label>
+                        <label for="isbn">ISBN <span class="required">(<?= gettext("required") ?>)</span></label>
                     </th>
                     <td>
                         <input type="text"
@@ -45,7 +45,7 @@ include("inc/header.php");
                 </tr>
                 <tr>
                     <th>
-                        <label for="year">Year <span class="required">(required)</span></label>
+                        <label for="year"><?= gettext("Year") ?> <span class="required">(<?= gettext("required") ?>)</span></label>
                     </th>
                     <td>
                         <input type="text"
@@ -56,10 +56,10 @@ include("inc/header.php");
                 </tr>
                 <tr>
                     <th>
-                        <label for="genre">Genre <span class="required">(required)</span></label>
+                        <label for="genre"><?= gettext("Genre") ?> <span class="required">(<?= gettext("required") ?>)</span></label>
                     </th>
                     <td>
-                        <select id="genre" name="genre" data-placeholder="Select One" class="chosen-select">
+                        <select id="genre" name="genre" data-placeholder="<?= gettext("Select One") ?>" class="chosen-select">
                             <?php foreach ($genres as $genre): ?>
                                 <option value="<?= $genre['id'] ?>"
                                     <?= isset($item['genre_id']) && $item['genre_id'] == $genre['id']
@@ -73,10 +73,10 @@ include("inc/header.php");
                 </tr>
                 <tr>
                     <th>
-                        <label for="authors">Authors <span class="required">(required)</span></label>
+                        <label for="authors"><?= gettext("Authors") ?> <span class="required">(<?= gettext("required") ?>)</span></label>
                     </th>
                     <td>
-                        <select id="authors" name="authors" multiple data-placeholder="Select authors" class="chosen-select">
+                        <select id="authors" name="authors" multiple data-placeholder="<?= gettext("Select authors") ?>" class="chosen-select">
                             <?php foreach ($authors as $author): ?>
                                 <option value="<?= $author['id'] ?>"
                                     <?= isset($item['author_ids']) && in_array($author['id'], $item['author_ids'])
@@ -90,10 +90,10 @@ include("inc/header.php");
                 </tr>
                 <tr>
                     <th>
-                        <label for="publisher">Publisher</label>
+                        <label for="publisher"><?= gettext("Publisher") ?></label>
                     </th>
                     <td>
-                        <select id="publisher" name="publisher" data-placeholder="Select One" class="chosen-select">
+                        <select id="publisher" name="publisher" data-placeholder="<?= gettext("Select One") ?>" class="chosen-select">
                             <option value="">-</option>
                             <?php foreach ($publishers as $publisher): ?>
                                 <option value="<?= $publisher['id'] ?>"
@@ -108,21 +108,29 @@ include("inc/header.php");
                 </tr>
                 <tr>
                     <th>
-                        <label for="format">Format</label>
+                        <label for="format"><?= gettext("Format") ?></label>
                     </th>
                     <td>
                         <?php $format = isset($item['format']) ? $item['format'] : null; ?>
-                        <select id="format" name="format" data-placeholder="Select One" class="chosen-select">
+                        <select id="format" name="format" data-placeholder="<?= gettext("Select One") ?>" class="chosen-select">
                             <option value="">None</option>
-                            <option value="Paperback" <?= $format == "Paperback" ? "selected" : ""; ?>>Paperback</option>
-                            <option value="Ebook" <?= $format == "Ebook" ? "selected" : ""; ?>>Ebook</option>
-                            <option value="Hardcover" <?= $format == "Hardcover" ? "selected" : ""; ?>>Hardcover</option>
-                            <option value="Audio" <?= $format == "Audio" ? "selected" : ""; ?>>Audio</option>
+                            <option value="Paperback" <?= $format == "Paperback" ? "selected" : ""; ?>>
+                                <?= gettext("Paperback") ?>
+                            </option>
+                            <option value="Ebook" <?= $format == "Ebook" ? "selected" : ""; ?>>
+                                <?= gettext("Ebook") ?>
+                            </option>
+                            <option value="Hardcover" <?= $format == "Hardcover" ? "selected" : ""; ?>>
+                                <?= gettext("Hardcover") ?>
+                            </option>
+                            <option value="Audio" <?= $format == "Audio" ? "selected" : ""; ?>>
+                                <?= gettext("Audio") ?>
+                            </option>
                         </select>
                     </td>
                 </tr>
             </table>
-            <input type="submit" value="<?= isset($item) ? 'Update' : 'Create' ?>">
+            <input type="submit" value="<?= isset($item) ? gettext('Update') : gettext('Create') ?>">
         </form>
     </div>
 </div>

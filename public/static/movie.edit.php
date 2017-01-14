@@ -1,6 +1,6 @@
 <?php
 
-$pageTitle = "Personal Media Library";
+$pageTitle = gettext("Personal Media Library");
 $pageTitle .= isset($title) ? ' | ' . $title : '';
 
 $section = null;
@@ -23,7 +23,7 @@ include("inc/header.php");
             <table>
                 <tr>
                     <th>
-                        <label for="title">Title <span class="required">(required)</span></label>
+                        <label for="title"><?= gettext("Title") ?> <span class="required">(<?= gettext("required") ?>)</span></label>
                     </th>
                     <td>
                         <input type="text"
@@ -34,7 +34,7 @@ include("inc/header.php");
                 </tr>
                 <tr>
                     <th>
-                        <label for="year">Year <span class="required">(required)</span></label>
+                        <label for="year"><?= gettext("Year") ?> <span class="required">(<?= gettext("required") ?>)</span></label>
                     </th>
                     <td>
                         <input type="text"
@@ -45,10 +45,10 @@ include("inc/header.php");
                 </tr>
                 <tr>
                     <th>
-                        <label for="genre">Genre <span class="required">(required)</span></label>
+                        <label for="genre"><?= gettext("Genre") ?> <span class="required">(<?= gettext("required") ?>)</span></label>
                     </th>
                     <td>
-                        <select id="genre" name="genre" data-placeholder="Select One" class="chosen-select">
+                        <select id="genre" name="genre" data-placeholder="<?= gettext("Select One") ?>" class="chosen-select">
                             <?php foreach ($genres as $genre): ?>
                                 <option value="<?= $genre['id'] ?>"
                                     <?= isset($item['genre_id']) && $item['genre_id'] == $genre['id']
@@ -62,25 +62,25 @@ include("inc/header.php");
                 </tr>
                 <tr>
                     <th>
-                        <label for="format">Format</label>
+                        <label for="format"><?= gettext("Format") ?></label>
                     </th>
                     <td>
                         <?php $format = isset($item['format']) ? $item['format'] : null; ?>
-                        <select id="format" name="format" data-placeholder="Select One" class="chosen-select">
-                            <option value="">None</option>
+                        <select id="format" name="format" data-placeholder="<?= gettext("Select One") ?>" class="chosen-select">
+                            <option value=""><?= gettext("None") ?></option>
                             <option value="DVD" <?= $format == "DVD" ? "selected" : ""; ?>>DVD</option>
                             <option value="Blu-Ray" <?= $format == "Blu-Ray" ? "selected" : ""; ?>>Blu-Ray</option>
-                            <option value="Streaming" <?= $format == "Streaming" ? "selected" : ""; ?>>Streaming</option>
+                            <option value="Streaming" <?= $format == "Streaming" ? "selected" : ""; ?>><?= gettext("Streaming") ?></option>
                             <option value="VHS" <?= $format == "VHS" ? "selected" : ""; ?>>VHS</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        <label for="director">Director <span class="required">(required)</span></label>
+                        <label for="director"><?= gettext("Director") ?> <span class="required">(<?= gettext("required") ?>)</span></label>
                     </th>
                     <td>
-                        <select id="director" name="director" data-placeholder="Select One" class="chosen-select">
+                        <select id="director" name="director" data-placeholder="<?= gettext("Select One") ?>" class="chosen-select">
                             <?php foreach ($directors as $director): ?>
                                 <option value="<?= $director['id'] ?>"
                                     <?= isset($item['director_id']) && $item['director_id'] == $director['id']
@@ -94,10 +94,10 @@ include("inc/header.php");
                 </tr>
                 <tr>
                     <th>
-                        <label for="casts">Casts <span class="required">(required)</span></label>
+                        <label for="casts"><?= gettext("Casts") ?> <span class="required">(<?= gettext("required") ?>)</span></label>
                     </th>
                     <td>
-                        <select id="casts" name="casts" multiple data-placeholder="Select Stars" class="chosen-select">
+                        <select id="casts" name="casts" multiple data-placeholder="<?= gettext("Select Stars") ?>" class="chosen-select">
                             <?php foreach ($stars as $star): ?>
                                 <option value="<?= $star['id'] ?>"
                                     <?= isset($item['cast_ids']) && in_array($star['id'], $item['cast_ids'])
@@ -110,7 +110,7 @@ include("inc/header.php");
                     </td>
                 </tr>
             </table>
-            <input type="submit" value="<?= isset($item) ? 'Update' : 'Create' ?>">
+            <input type="submit" value="<?= isset($item) ? gettext('Update') : gettext('Create') ?>">
         </form>
     </div>
 </div>

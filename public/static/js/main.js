@@ -33,4 +33,21 @@ $(document).ready(function() {
             templateCtrl.init();
             break;
     }
+
+    $('.lang button').on('click', function(e) {
+        e.preventDefault();
+        $('.lang button').addClass('disabled').attr('disabled', true);
+        var params = {
+            Lang: $(e.target).attr('data-value')
+        };
+
+        $.postJSON('/lang', params, function (res) {
+            if (res.Status == 1) {
+                window.location.reload();
+            } else {
+                $('.lang button').removeClass('disabled').attr('disabled', false);
+                console.log(res.Message);
+            }
+        });
+    });
 });

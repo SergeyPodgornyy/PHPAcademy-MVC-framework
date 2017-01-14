@@ -1,6 +1,6 @@
 <?php
 
-$pageTitle = "Personal Media Library";
+$pageTitle = gettext("Personal Media Library");
 $pageTitle .= isset($title) ? ' | ' . $title : '';
 
 $section = null;
@@ -25,14 +25,14 @@ include("inc/header.php");
         <?php // TODO: Add breadcrumbs ?>
         <div class="pull-right">
             <a href="<?= '/' . $page . '/' . $item['id'] . '/edit' ?>" type="button" class="btn btn-warning">
-                <span class="fa fa-pencil"></span> Edit data
+                <span class="fa fa-pencil"></span> <?= gettext('Edit data') ?>
             </a>
             <button type="button"
                     class="btn btn-danger"
                     id="delete-item"
                     data-id="<?= $item['id'] ?>"
                     style="width: 150px">
-                <span class="fa fa-trash-o fa-fw"></span> Delete item
+                <span class="fa fa-trash-o fa-fw"></span> <?= gettext('Delete item') ?>
             </button>
         </div>
         <div class="clear-fix"></div>
@@ -45,48 +45,48 @@ include("inc/header.php");
             <h1><?= $item["title"]; ?></h1>
             <table>
                 <tr>
-                    <th>Genre</th>
+                    <th><?= gettext('Genre') ?></th>
                     <td><?= $item["genre"]; ?></td>
                 </tr>
                 <tr>
-                    <th>Format</th>
+                    <th><?= gettext('Format') ?></th>
                     <td><?= $item["format"]; ?></td>
                 </tr>
                 <tr>
-                    <th>Year</th>
+                    <th><?= gettext('Year') ?></th>
                     <td><?= $item["year"]; ?></td>
                 </tr>
 
                 <?php if (strtolower($page) === "books") : ?>
 
                     <tr>
-                        <th>Authors</th>
+                        <th><?= gettext('Authors') ?></th>
                         <td><?= implode(", ", $item["authors"]);?></td>
                     </tr>
                     <tr>
-                        <th>Publisher</th>
+                        <th><?= gettext('Publisher') ?></th>
                         <td><?= $item["publisher"];?></td>
                     </tr>
                     <tr>
-                        <th>ISBN</th>
+                        <th><?= gettext('ISBN') ?></th>
                         <td><?= $item["isbn"];?></td>
                     </tr>
 
                 <?php elseif (strtolower($page) === "movies") : ?>
 
                     <tr>
-                        <th>Director</th>
+                        <th><?= gettext('Director') ?></th>
                         <td><?= $item["director"];?></td>
                     </tr>
                     <tr>
-                        <th>Stars</th>
+                        <th><?= gettext('Stars') ?></th>
                         <td><?= implode(", ", $item["casts"]);?></td>
                     </tr>
 
                 <?php elseif (strtolower($page) === "music") : ?>
 
                     <tr>
-                        <th>Artist</th>
+                        <th><?= gettext('Artist') ?></th>
                         <td><?= $item["artist"];?></td>
                     </tr>
 

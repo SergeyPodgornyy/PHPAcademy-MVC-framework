@@ -65,7 +65,7 @@ class Book extends Base
 
         $this->app->render('catalog.php', [
             'page'  => 'books',
-            'title' => 'Books',
+            'title' => gettext('Books'),
             'items' => $res['Status'] == 1 ? $res['Books'] : [],
         ]);
     }
@@ -104,7 +104,7 @@ class Book extends Base
         $this->app->render('book.edit.php', [
             'page'      => 'books',
             'action'    => 'create',
-            'title'     => 'Insert new book',
+            'title'     => gettext('Insert new book'),
             'genres'    => $genres['Status'] == 1 ? $genres['Genres'] : [],
             'authors'   => $authors['Status'] == 1 ? $authors['Authors'] : [],
             'publishers' => $publishers['Status'] == 1 ? $publishers['Publishers'] : [],

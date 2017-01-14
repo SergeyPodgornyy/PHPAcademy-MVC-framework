@@ -65,7 +65,7 @@ class Movie extends Base
 
         $this->app->render('catalog.php', [
             'page'  => 'movies',
-            'title' => 'Movies',
+            'title' => gettext('Movies'),
             'items' => $res['Status'] == 1 ? $res['Movies'] : [],
         ]);
     }
@@ -104,7 +104,7 @@ class Movie extends Base
         $this->app->render('movie.edit.php', [
             'page'      => 'movies',
             'action'    => 'create',
-            'title'     => 'Insert new movie',
+            'title'     => gettext('Insert new movie'),
             'genres'    => $genres['Status'] == 1 ? $genres['Genres'] : [],
             'stars'     => $casts['Status'] == 1 ? $casts['Casts'] : [],
             'directors' => $directors['Status'] == 1 ? $directors['Directors'] : [],

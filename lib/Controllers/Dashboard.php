@@ -55,7 +55,7 @@ class Dashboard extends Base
 
         // shuffle($items);
         $this->app->render('index.php', [
-            'title'     => 'Home',
+            'title'     => gettext('Home'),
             'items'     => $items,
         ]);
     }

@@ -1,0 +1,143 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-14 05:47+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Language successfully changed"
+msgstr ""
+
+msgid "Unknown Error Occurred. Please contact administrator"
+msgstr ""
+
+msgid "Some Error Occurred. Please contact administrator"
+msgstr ""
+
+msgid "Wrong language defined"
+msgstr ""
+
+msgid "Personal Media Library"
+msgstr ""
+
+msgid "May we suggest something?"
+msgstr ""
+
+msgid "View Details"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "required"
+msgstr ""
+
+msgid "Year"
+msgstr ""
+
+msgid "Genre"
+msgstr ""
+
+msgid "Select One"
+msgstr ""
+
+msgid "Authors"
+msgstr ""
+
+msgid "Select authors"
+msgstr ""
+
+msgid "Publisher"
+msgstr ""
+
+msgid "Format"
+msgstr ""
+
+msgid "Paperback"
+msgstr ""
+
+msgid "Ebook"
+msgstr ""
+
+msgid "Hardcover"
+msgstr ""
+
+msgid "Audio"
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Cassette"
+msgstr ""
+
+msgid "Vinyl"
+msgstr ""
+
+msgid "Artist"
+msgstr ""
+
+msgid "Edit data"
+msgstr ""
+
+msgid "Delete item"
+msgstr ""
+
+msgid "ISBN"
+msgstr ""
+
+msgid "Director"
+msgstr ""
+
+msgid "Stars"
+msgstr ""
+
+msgid "Streaming"
+msgstr ""
+
+msgid "Casts"
+msgstr ""
+
+msgid "Select Stars"
+msgstr ""
+
+msgid "Insert new item"
+msgstr ""
+
+msgid "Books"
+msgstr ""
+
+msgid "Movies"
+msgstr ""
+
+msgid "Music"
+msgstr ""
+
+msgid "Insert new book"
+msgstr ""
+
+msgid "Insert new music"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Insert new movie"
+msgstr ""

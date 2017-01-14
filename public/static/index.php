@@ -1,6 +1,6 @@
 <?php
 
-$pageTitle = "Personal Media Library";
+$pageTitle = gettext("Personal Media Library");
 $pageTitle .= isset($title) ? ' | ' . $title : '';
 
 $section = null;
@@ -13,14 +13,14 @@ include("inc/header.php");
 ?>
         <div class="section catalog random">
             <div class="wrapper">
-                <h2>May we suggest something?</h2>
+                <h2><?= gettext('May we suggest something?') ?></h2>
                 <ul class="catalog">
                     <?php // TODO: add ribbon to each category (movie, book, music) ?>
                     <?php foreach ($items as $item) : ?>
                         <li>
                             <a href='<?= '/' . $item['category'] . '/' . $item['id'] ?>'>
                                 <img src="/static/<?= $item['image'] ?: 'img/300x300.gif' ?>" alt="<?= $item['title'] ?>">
-                                <p>View Details</p>
+                                <p><?= gettext('View Details') ?></p>
                             </a>
                         </li>
                     <?php endforeach; ?>

@@ -14,16 +14,20 @@
 <body>
     <div class="header">
         <div class="wrapper">
-            <h1 class="branding-title"><a href="/">Personal Media Library</a></h1>
+            <h1 class="branding-title"><a href="/"><?= gettext("Personal Media Library") ?></a></h1>
+            <span class="lang">
+                <button data-value='en' class="btn btn-default">EN</button>
+                <button data-value='ru' class="btn btn-default">RU</button>
+            </span>
             <ul class="nav">
                 <li class="books <?= ($section=='books') ? 'on' : ''; ?>">
-                    <a href="/books">Books</a>
+                    <a href="/books"><?= gettext("Books") ?></a>
                 </li>
                 <li class="movies <?= ($section=='movies') ? 'on' : ''; ?>">
-                    <a href="/movies">Movies</a>
+                    <a href="/movies"><?= gettext("Movies") ?></a>
                 </li>
                 <li class="music <?= ($section=='music') ? 'on' : ''; ?>">
-                    <a href="/music">Music</a>
+                    <a href="/music"><?= gettext("Music") ?></a>
                 </li>
             </ul>
         </div>
