@@ -3,11 +3,10 @@
 namespace Model;
 
 use Model\Driver\Engine;
+use Utils\Cache;
 
 class Genre implements ModelInterface
 {
-    // TODO: implement Memcached
-
     use Traits\BaseFunctions;
 
     const CONNECTION_NAME = 'framework';
@@ -36,6 +35,19 @@ class Genre implements ModelInterface
      */
     public static function index($params = array())
     {
+        $cache = new Cache();
+        $cacheKey = implode('_', [
+            'Genre',
+            'Index',
+            md5(json_encode($params))
+        ]);
+
+        $data = $cache->get($cacheKey);
+
+        if ($data !== false) {
+            return $data;
+        }
+
         $connection = self::getConnection();
 
         $where = isset($params['Type']) ? " WHERE type='$params[Type]' " : '';
@@ -51,7 +63,9 @@ class Genre implements ModelInterface
         $success = $statement->execute();
 
         if ($success) {
-            return $statement->fetchAll();
+            $result = $statement->fetchAll();
+            $cache->set($cacheKey, $result);
+            return $result;
         }
 
         return false;
@@ -65,6 +79,19 @@ class Genre implements ModelInterface
      */
     public static function search($params = array())
     {
+        $cache = new Cache();
+        $cacheKey = implode('_', [
+            'Genre',
+            'Search',
+            md5(json_encode($params))
+        ]);
+
+        $data = $cache->get($cacheKey);
+
+        if ($data !== false) {
+            return $data;
+        }
+
         $connection = self::getConnection();
 
         $whereName = isset($params['Search']) && $params['Search']
@@ -93,7 +120,9 @@ class Genre implements ModelInterface
         $success = $statement->execute();
 
         if ($success) {
-            return $statement->fetchAll();
+            $result = $statement->fetchAll();
+            $cache->set($cacheKey, $result);
+            return $result;
         }
 
         return false;

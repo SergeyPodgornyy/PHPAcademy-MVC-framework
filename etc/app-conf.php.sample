@@ -22,6 +22,11 @@ return [
             'charset'  => 'utf8',
         ],
     ],
+    'cacheConfig' => [
+        'cacheSystem'   => 'memcached',
+        'memcachedHost' => 'localhost',
+        'memcachedPort' => 11211,
+    ],
     'headerAccessToken' => [
         'name'      => 'FRAMEWORK-TOKEN',
         'values'    => [
