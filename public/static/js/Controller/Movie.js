@@ -18,7 +18,8 @@ function Movie() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Well done!</strong> You successfully deleted this movie'
+                        + '    <strong>' + gettext('Well done!') + '</strong> '
+                        +      gettext('You successfully deleted this movie')
                         + '</div>';
                     $('#content .wrapper').prepend(successBlock);
                     setTimeout(function () {
@@ -31,7 +32,8 @@ function Movie() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Oh snap!</strong> Change a few things up and try submitting again.'
+                        + '    <strong>' + gettext('Oh snap!') + '</strong> '
+                        +      gettext('Change a few things up and try submitting again.')
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
                 }
@@ -67,7 +69,8 @@ function Movie() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Well done!</strong> You successfully inserted movie'
+                        + '    <strong>' + gettext('Well done!') + '</strong> '
+                        +      gettext('You successfully inserted movie')
                         + '</div>';
                     $('#content .wrapper').prepend(successBlock);
                     setTimeout(function () {
@@ -80,7 +83,8 @@ function Movie() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Oh snap!</strong> Change a few things up and try submitting again.'
+                        + '    <strong>' + gettext('Oh snap!') + '</strong> '
+                        +      gettext('Change a few things up and try submitting again.')
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
                 }
@@ -117,7 +121,8 @@ function Movie() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Well done!</strong> You successfully updated this movie'
+                        + '    <strong>' + gettext('Well done!') + '</strong> '
+                        +      gettext('You successfully updated this movie')
                         + '</div>';
                     $('#content .wrapper').prepend(successBlock);
                     setTimeout(function () {
@@ -130,7 +135,8 @@ function Movie() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Oh snap!</strong> Change a few things up and try submitting again.'
+                        + '    <strong>' + gettext('Oh snap!') + '</strong> '
+                        +      gettext('Change a few things up and try submitting again.')
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
                 }

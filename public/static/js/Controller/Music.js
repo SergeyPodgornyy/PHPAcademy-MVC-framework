@@ -18,7 +18,8 @@ function Music() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Well done!</strong> You successfully deleted this music item'
+                        + '    <strong>' + gettext('Well done!') + '</strong> '
+                        +      gettext('You successfully deleted this music item')
                         + '</div>';
                     $('#content .wrapper').prepend(successBlock);
                     setTimeout(function () {
@@ -31,7 +32,8 @@ function Music() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Oh snap!</strong> Change a few things up and try submitting again.'
+                        + '    <strong>' + gettext('Oh snap!') + '</strong> '
+                        +      gettext('Change a few things up and try submitting again.')
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
                 }
@@ -65,7 +67,8 @@ function Music() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Well done!</strong> You successfully inserted music item'
+                        + '    <strong>' + gettext('Well done!') + '</strong> '
+                        +      gettext('You successfully inserted music item')
                         + '</div>';
                     $('#content .wrapper').prepend(successBlock);
                     setTimeout(function () {
@@ -78,7 +81,8 @@ function Music() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Oh snap!</strong> Change a few things up and try submitting again.'
+                        + '    <strong>' + gettext('Oh snap!') + '</strong> '
+                        +      gettext('Change a few things up and try submitting again.')
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
                 }
@@ -113,7 +117,8 @@ function Music() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Well done!</strong> You successfully updated this music item'
+                        + '    <strong>' + gettext('Well done!') + '</strong> '
+                        +      gettext('You successfully updated this music item')
                         + '</div>';
                     $('#content .wrapper').prepend(successBlock);
                     setTimeout(function () {
@@ -126,7 +131,8 @@ function Music() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Oh snap!</strong> Change a few things up and try submitting again.'
+                        + '    <strong>' + gettext('Oh snap!') + '</strong> '
+                        +      gettext('Change a few things up and try submitting again.')
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
                 }

@@ -34,15 +34,15 @@ $(document).ready(function() {
             break;
     }
 
+    initGettext();
     $('.lang button').on('click', function(e) {
         e.preventDefault();
         $('.lang button').addClass('disabled').attr('disabled', true);
-        var params = {
-            Lang: $(e.target).attr('data-value')
-        };
+        var langCode = $(e.target).attr('data-value');
 
-        $.postJSON('/lang', params, function (res) {
+        $.postJSON('/lang', {Lang: langCode}, function (res) {
             if (res.Status == 1) {
+                document.cookie = "LANG=" + langCode;
                 window.location.reload();
             } else {
                 $('.lang button').removeClass('disabled').attr('disabled', false);

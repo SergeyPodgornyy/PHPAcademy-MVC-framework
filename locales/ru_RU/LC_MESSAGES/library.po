@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-14 05:47+0200\n"
-"PO-Revision-Date: 2017-01-14 05:48+0300\n"
+"POT-Creation-Date: 2017-01-14 08:14+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
 
 msgid "Language successfully changed"
 msgstr "Язык успешно изменен"
@@ -34,6 +34,7 @@ msgstr "Личная Медия Библиотека"
 msgid "May we suggest something?"
 msgstr "Можем ли мы Вам что-нибудь поссоветовать?"
 
+#. TODO: add ribbon to each category (movie, book, music)
 msgid "View Details"
 msgstr "Детальнее"
 
@@ -94,6 +95,7 @@ msgstr "Винил"
 msgid "Artist"
 msgstr "Исполнитель"
 
+#. TODO: Add breadcrumbs
 msgid "Edit data"
 msgstr "Редактировать"
 
@@ -118,6 +120,7 @@ msgstr "В ролях"
 msgid "Select Stars"
 msgstr "Выберите звезд"
 
+#. TODO: Add breadcrumbs
 msgid "Insert new item"
 msgstr "Внести новый элемент"
 

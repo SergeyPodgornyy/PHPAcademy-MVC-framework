@@ -18,7 +18,8 @@ function Book() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Well done!</strong> You successfully deleted this book'
+                        + '    <strong>' + gettext('Well done!') + '</strong> '
+                        +      gettext('You successfully deleted this book')
                         + '</div>';
                     $('#content .wrapper').prepend(successBlock);
                     setTimeout(function () {
@@ -31,7 +32,8 @@ function Book() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Oh snap!</strong> Change a few things up and try submitting again.'
+                        + '    <strong>' + gettext('Oh snap!') + '</strong> '
+                        +      gettext('Change a few things up and try submitting again.')
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
                 }
@@ -68,7 +70,8 @@ function Book() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Well done!</strong> You successfully inserted book'
+                        + '    <strong>' + gettext('Well done!') + '</strong> '
+                        +      gettext('You successfully inserted book')
                         + '</div>';
                     $('#content .wrapper').prepend(successBlock);
                     setTimeout(function () {
@@ -81,7 +84,8 @@ function Book() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Oh snap!</strong> Change a few things up and try submitting again.'
+                        + '    <strong>' + gettext('Oh snap!') + '</strong> '
+                        +      gettext('Change a few things up and try submitting again.')
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
                 }
@@ -119,7 +123,8 @@ function Book() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Well done!</strong> You successfully updated this book'
+                        + '    <strong>' + gettext('Well done!') + '</strong> '
+                        +      gettext('You successfully updated this book')
                         + '</div>';
                     $('#content .wrapper').prepend(successBlock);
                     setTimeout(function () {
@@ -132,7 +137,8 @@ function Book() {
                         + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
-                        + '    <strong>Oh snap!</strong> Change a few things up and try submitting again.'
+                        + '    <strong>' + gettext('Oh snap!') + '</strong> '
+                        +      gettext('Change a few things up and try submitting again.')
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
                 }

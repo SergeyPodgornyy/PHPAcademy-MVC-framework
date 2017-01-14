@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-14 05:47+0200\n"
+"POT-Creation-Date: 2017-01-14 08:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,7 @@ msgstr ""
 msgid "May we suggest something?"
 msgstr ""
 
+#. TODO: add ribbon to each category (movie, book, music)
 msgid "View Details"
 msgstr ""
 
@@ -94,6 +95,7 @@ msgstr ""
 msgid "Artist"
 msgstr ""
 
+#. TODO: Add breadcrumbs
 msgid "Edit data"
 msgstr ""
 
@@ -118,6 +120,7 @@ msgstr ""
 msgid "Select Stars"
 msgstr ""
 
+#. TODO: Add breadcrumbs
 msgid "Insert new item"
 msgstr ""
 
