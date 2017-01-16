@@ -1,7 +1,11 @@
 var MAIN_LOCALE_EN = 
 {
    "library_js" : {
-      "some string" : [
+      "You successfully inserted music item" : [
+         null,
+         ""
+      ],
+      "Change a few things up and try submitting again" : [
          null,
          ""
       ],
@@ -9,7 +13,11 @@ var MAIN_LOCALE_EN =
          null,
          ""
       ],
-      "You successfully deleted this movie" : [
+      "Well done!" : [
+         null,
+         ""
+      ],
+      "You successfully updated this book" : [
          null,
          ""
       ],
@@ -17,31 +25,7 @@ var MAIN_LOCALE_EN =
          null,
          ""
       ],
-      "string" : [
-         null,
-         ""
-      ],
-      "You successfully deleted this music item" : [
-         null,
-         ""
-      ],
-      "This is the %1 %2" : [
-         null,
-         ""
-      ],
-      "Oh snap!" : [
-         null,
-         ""
-      ],
-      "text" : [
-         null,
-         ""
-      ],
-      "this will get translated" : [
-         null,
-         ""
-      ],
-      "Change a few things up and try submitting again." : [
+      "You successfully inserted movie" : [
          null,
          ""
       ],
@@ -49,60 +33,19 @@ var MAIN_LOCALE_EN =
          null,
          ""
       ],
-      "%d files deleted.\\n" : [
-         null,
-         ""
-      ],
-      "Hello World!\\n" : [
-         null,
-         ""
-      ],
-      "" : {
-         "MIME-Version" : " 1.0",
-         "POT-Creation-Date" : " 2017-01-14 08:14+0200",
-         "Project-Id-Version" : " PACKAGE VERSION",
-         "Plural-Forms" : " nplurals=1; plural=0;",
-         "Content-Type" : " text/plain; charset=CHARSET",
-         "Language" : " ",
-         "Language-Team" : " LANGUAGE <LL@li.org>",
-         "PO-Revision-Date" : " YEAR-MO-DA HO:MI+ZONE",
-         "Report-Msgid-Bugs-To" : " ",
-         "Last-Translator" : " FULL NAME <EMAIL@ADDRESS>",
-         "Content-Transfer-Encoding" : " 8bit"
-      },
       "You successfully updated this movie" : [
          null,
          ""
       ],
-      "One file deleted.\\n" : [
-         "%d files deleted.\\n",
-         ""
-      ],
-      "You successfully updated this book" : [
+      "You successfully deleted this music item" : [
          null,
          ""
       ],
-      "You successfully inserted movie" : [
+      "Oh snap!" : [
          null,
          ""
       ],
-      "one banana" : [
-         "%1 bananas",
-         ""
-      ],
-      "You successfully inserted music item" : [
-         null,
-         ""
-      ],
-      "Hello %1" : [
-         null,
-         ""
-      ],
-      "Well done!" : [
-         null,
-         ""
-      ],
-      "Hello " : [
+      "You successfully deleted this movie" : [
          null,
          ""
       ]

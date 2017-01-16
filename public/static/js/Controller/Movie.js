@@ -33,7 +33,7 @@ function Movie() {
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
                         + '    <strong>' + gettext('Oh snap!') + '</strong> '
-                        +      gettext('Change a few things up and try submitting again.')
+                        +      gettext('Change a few things up and try submitting again')
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
                 }
@@ -84,7 +84,7 @@ function Movie() {
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
                         + '    <strong>' + gettext('Oh snap!') + '</strong> '
-                        +      gettext('Change a few things up and try submitting again.')
+                        +      gettext('Change a few things up and try submitting again')
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
                 }
@@ -136,7 +136,7 @@ function Movie() {
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
                         + '    <strong>' + gettext('Oh snap!') + '</strong> '
-                        +      gettext('Change a few things up and try submitting again.')
+                        +      gettext('Change a few things up and try submitting again')
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
                 }

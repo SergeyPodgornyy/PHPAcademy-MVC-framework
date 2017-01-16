@@ -19,6 +19,7 @@ class Engine
         $opt = [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . $config['charset'],
         ];
 
         self::$connections[$name] = new TransactionPDO($dsn, $username, $password, $opt);

@@ -1,22 +1,21 @@
-# SOME DESCRIPTIVE TITLE.
+# Personal Media Library.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Sergey Podgornyy <sergey.podgornyy@yahoo.de>, 2017.
 #
-msgid ""
-msgstr ""
+
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-14 08:14+0200\n"
+"POT-Creation-Date: 2017-01-16 14:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Sergey Podgornyy <sergey.podgornyy@yahoo.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Language successfully changed"
+msgid "Language has been successfully changed"
 msgstr "Язык успешно изменен"
 
 msgid "Unknown Error Occurred. Please contact administrator"
@@ -25,7 +24,7 @@ msgstr "Возникла неизвестная ошибка. Пожалуйст
 msgid "Some Error Occurred. Please contact administrator"
 msgstr "Возникли технические проблемы. Пожалуйста, обратитесь к администратору"
 
-msgid "Wrong language defined"
+msgid "Wrong language has been defined"
 msgstr "Указан неверный язык"
 
 msgid "Personal Media Library"
@@ -34,7 +33,6 @@ msgstr "Личная Медия Библиотека"
 msgid "May we suggest something?"
 msgstr "Можем ли мы Вам что-нибудь поссоветовать?"
 
-#. TODO: add ribbon to each category (movie, book, music)
 msgid "View Details"
 msgstr "Детальнее"
 
@@ -66,7 +64,7 @@ msgid "Format"
 msgstr "Формат"
 
 msgid "Paperback"
-msgstr "Печатное издание"
+msgstr "Книга в мягком переплете"
 
 msgid "Ebook"
 msgstr "Электронная книга"
@@ -95,7 +93,6 @@ msgstr "Винил"
 msgid "Artist"
 msgstr "Исполнитель"
 
-#. TODO: Add breadcrumbs
 msgid "Edit data"
 msgstr "Редактировать"
 
@@ -120,7 +117,6 @@ msgstr "В ролях"
 msgid "Select Stars"
 msgstr "Выберите звезд"
 
-#. TODO: Add breadcrumbs
 msgid "Insert new item"
 msgstr "Внести новый элемент"
 

@@ -10,6 +10,7 @@ abstract class Base
 
     private $config;
     private $userId;
+    private $locale;
 
     public function __construct(array $attrs = [])
     {
@@ -18,6 +19,9 @@ abstract class Base
         }
         if (isset($attrs['UserId'])) {
             $this->userId = $attrs['UserId'];
+        }
+        if (isset($attrs['locale'])) {
+            $this->locale = $attrs['locale'];
         }
     }
 
@@ -29,6 +33,11 @@ abstract class Base
     protected function userId()
     {
         return $this->userId;
+    }
+
+    protected function locale()
+    {
+        return $this->locale;
     }
 
     final public function run($params = [])

@@ -65,7 +65,7 @@ include("inc/header.php");
                                     <?= isset($item['genre_id']) && $item['genre_id'] == $genre['id']
                                         ? "selected"
                                         : ""; ?>>
-                                    <?= $genre['name'] ?>
+                                    <?= isLangSet() && $genre['translated_name'] ? $genre['translated_name'] : $genre['name'] ?>
                                 </option>
                             <?php endforeach ?>
                         </select>
@@ -113,15 +113,15 @@ include("inc/header.php");
                     <td>
                         <?php $format = isset($item['format']) ? $item['format'] : null; ?>
                         <select id="format" name="format" data-placeholder="<?= gettext("Select One") ?>" class="chosen-select">
-                            <option value="">None</option>
+                            <option value=""><?= gettext('None') ?></option>
                             <option value="Paperback" <?= $format == "Paperback" ? "selected" : ""; ?>>
                                 <?= gettext("Paperback") ?>
                             </option>
-                            <option value="Ebook" <?= $format == "Ebook" ? "selected" : ""; ?>>
-                                <?= gettext("Ebook") ?>
-                            </option>
                             <option value="Hardcover" <?= $format == "Hardcover" ? "selected" : ""; ?>>
                                 <?= gettext("Hardcover") ?>
+                            </option>
+                            <option value="Ebook" <?= $format == "Ebook" ? "selected" : ""; ?>>
+                                <?= gettext("Ebook") ?>
                             </option>
                             <option value="Audio" <?= $format == "Audio" ? "selected" : ""; ?>>
                                 <?= gettext("Audio") ?>

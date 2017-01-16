@@ -1,146 +1,142 @@
-# SOME DESCRIPTIVE TITLE.
+# Personal Media Library.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Sergey Podgornyy <sergey.podgornyy@yahoo.de>, 2017.
 #
-msgid ""
-msgstr ""
+
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-14 08:14+0200\n"
+"POT-Creation-Date: 2017-01-16 14:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Sergey Podgornyy <sergey.podgornyy@yahoo.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Language successfully changed"
-msgstr ""
+msgid "Language has been successfully changed"
+msgstr "Мова успішно змінена"
 
 msgid "Unknown Error Occurred. Please contact administrator"
-msgstr ""
+msgstr "Сталася невідома помилка. Будь ласка, зверніться до адміністратора"
 
 msgid "Some Error Occurred. Please contact administrator"
-msgstr ""
+msgstr "Сталася помилка. Будь ласка, зверніться до адміністратора"
 
-msgid "Wrong language defined"
-msgstr ""
+msgid "Wrong language has been defined"
+msgstr "Неправильний мова вказана"
 
 msgid "Personal Media Library"
-msgstr ""
+msgstr "Особиста медія бібліотека"
 
 msgid "May we suggest something?"
-msgstr ""
+msgstr "Чи могли б ми Вам дещо порадити?"
 
-#. TODO: add ribbon to each category (movie, book, music)
 msgid "View Details"
-msgstr ""
+msgstr "Детальніше"
 
 msgid "Title"
-msgstr ""
+msgstr "Назва"
 
 msgid "required"
-msgstr ""
+msgstr "обов'язково"
 
 msgid "Year"
-msgstr ""
+msgstr "Рік"
 
 msgid "Genre"
-msgstr ""
+msgstr "Жанр"
 
 msgid "Select One"
-msgstr ""
+msgstr "Виберіть один"
 
 msgid "Authors"
-msgstr ""
+msgstr "Автори"
 
 msgid "Select authors"
-msgstr ""
+msgstr "Виберіть авторів"
 
 msgid "Publisher"
-msgstr ""
+msgstr "Видавництво"
 
 msgid "Format"
-msgstr ""
+msgstr "Формат"
 
 msgid "Paperback"
-msgstr ""
+msgstr "Книга в м'якій обкладинці"
 
 msgid "Ebook"
-msgstr ""
+msgstr "Електронна книга"
 
 msgid "Hardcover"
-msgstr ""
+msgstr "Книга в твердій обкладинці"
 
 msgid "Audio"
-msgstr ""
+msgstr "Аудіо"
 
 msgid "Update"
-msgstr ""
+msgstr "Оновити"
 
 msgid "Create"
-msgstr ""
+msgstr "Створити"
 
 msgid "None"
-msgstr ""
+msgstr "Жоден"
 
 msgid "Cassette"
-msgstr ""
+msgstr "Касета"
 
 msgid "Vinyl"
-msgstr ""
+msgstr "Вініл"
 
 msgid "Artist"
-msgstr ""
+msgstr "Митець"
 
-#. TODO: Add breadcrumbs
 msgid "Edit data"
-msgstr ""
+msgstr "Редагувати"
 
 msgid "Delete item"
-msgstr ""
+msgstr "Видалити"
 
 msgid "ISBN"
-msgstr ""
+msgstr "ISBN"
 
 msgid "Director"
-msgstr ""
+msgstr "Режисер"
 
 msgid "Stars"
-msgstr ""
+msgstr "Зірки"
 
 msgid "Streaming"
-msgstr ""
+msgstr "Стрім"
 
 msgid "Casts"
-msgstr ""
+msgstr "В ролях"
 
 msgid "Select Stars"
-msgstr ""
+msgstr "Оберіть зірок"
 
-#. TODO: Add breadcrumbs
 msgid "Insert new item"
-msgstr ""
+msgstr "Створити новий запис"
 
 msgid "Books"
-msgstr ""
+msgstr "Книги"
 
 msgid "Movies"
-msgstr ""
+msgstr "Фільми"
 
 msgid "Music"
-msgstr ""
+msgstr "Музика"
 
 msgid "Insert new book"
-msgstr ""
+msgstr "Додати нову книгу"
 
 msgid "Insert new music"
-msgstr ""
+msgstr "Додати новий музичний твір"
 
 msgid "Home"
-msgstr ""
+msgstr "Головна"
 
 msgid "Insert new movie"
-msgstr ""
+msgstr "Додати новий фільм"

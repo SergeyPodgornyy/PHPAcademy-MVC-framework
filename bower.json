@@ -17,6 +17,7 @@
   "dependencies": {
     "bootstrap": "*",
     "jquery": "*",
-    "chosen": "*"
+    "chosen": "*",
+    "components-font-awesome": "4.7.*"
   }
 }

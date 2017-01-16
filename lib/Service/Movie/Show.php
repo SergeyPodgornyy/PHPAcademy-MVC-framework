@@ -20,7 +20,7 @@ class Show extends Base
 
     public function execute(array $params)
     {
-        $movie = Movie::selectOne(['Id' => $params['Id']]);
+        $movie = Movie::selectOne(['Id' => $params['Id'], 'Locale' => $this->locale()]);
 
         if (!$movie) {
             throw new X([

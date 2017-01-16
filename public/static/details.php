@@ -46,48 +46,48 @@ include("inc/header.php");
             <table>
                 <tr>
                     <th><?= gettext('Genre') ?></th>
-                    <td><?= $item["genre"]; ?></td>
+                    <td><?= $item["genre"] ?></td>
                 </tr>
                 <tr>
                     <th><?= gettext('Format') ?></th>
-                    <td><?= $item["format"]; ?></td>
+                    <td><?= $item["format"] ?></td>
                 </tr>
                 <tr>
                     <th><?= gettext('Year') ?></th>
-                    <td><?= $item["year"]; ?></td>
+                    <td><?= $item["year"] ?></td>
                 </tr>
 
                 <?php if (strtolower($page) === "books") : ?>
 
                     <tr>
                         <th><?= gettext('Authors') ?></th>
-                        <td><?= implode(", ", $item["authors"]);?></td>
+                        <td><?= implode(", ", $item["authors"]) ?></td>
                     </tr>
                     <tr>
                         <th><?= gettext('Publisher') ?></th>
-                        <td><?= $item["publisher"];?></td>
+                        <td><?= $item["publisher"] ?></td>
                     </tr>
                     <tr>
                         <th><?= gettext('ISBN') ?></th>
-                        <td><?= $item["isbn"];?></td>
+                        <td><?= $item["isbn"] ?></td>
                     </tr>
 
                 <?php elseif (strtolower($page) === "movies") : ?>
 
                     <tr>
                         <th><?= gettext('Director') ?></th>
-                        <td><?= $item["director"];?></td>
+                        <td><?= $item["director"] ?></td>
                     </tr>
                     <tr>
                         <th><?= gettext('Stars') ?></th>
-                        <td><?= implode(", ", $item["casts"]);?></td>
+                        <td><?= implode(", ", $item["casts"]) ?></td>
                     </tr>
 
                 <?php elseif (strtolower($page) === "music") : ?>
 
                     <tr>
                         <th><?= gettext('Artist') ?></th>
-                        <td><?= $item["artist"];?></td>
+                        <td><?= $item["artist"] ?></td>
                     </tr>
 
                 <?php endif; ?>

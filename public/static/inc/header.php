@@ -1,8 +1,19 @@
+<?php
+    require_once __DIR__ . '/helpers.php';
+
+    $langs = [
+        'en'    => 'EN',
+        'de'    => 'DE',
+        'ru'    => 'RU',
+        'ua'    => 'UA',
+    ];
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title><?= $pageTitle; ?></title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/vendor/components-font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/static/vendor/chosen/chosen.css">
     <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css" type="text/css">
@@ -16,8 +27,12 @@
         <div class="wrapper">
             <h1 class="branding-title"><a href="/"><?= gettext("Personal Media Library") ?></a></h1>
             <span class="lang">
-                <button data-value='en' class="btn btn-default">EN</button>
-                <button data-value='ru' class="btn btn-default">RU</button>
+                <?php foreach ($langs as $code => $langName) : ?>
+                    <button data-value='<?= $code ?>'
+                            class="btn btn-lang <?= getLanguage() == $code ? 'active' : '' ?>">
+                        <?= $langName ?>
+                    </button>
+                <?php endforeach; ?>
             </span>
             <ul class="nav">
                 <li class="books <?= ($section=='books') ? 'on' : ''; ?>">

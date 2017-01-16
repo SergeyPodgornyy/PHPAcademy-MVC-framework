@@ -1,15 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
+# Personal Media Library.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Sergey Podgornyy <sergey.podgornyy@yahoo.de>, 2017.
 #
-msgid ""
-msgstr ""
+
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-14 08:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Sergey Podgornyy <sergey.podgornyy@yahoo.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -26,7 +25,7 @@ msgstr "Вы успешно удалили запись об этой книге
 msgid "Oh snap!"
 msgstr "Увы!"
 
-msgid "Change a few things up and try submitting again."
+msgid "Change a few things up and try submitting again"
 msgstr "Внесите некоторые изменения и повторите ввод снова"
 
 msgid "You successfully inserted book"
@@ -52,40 +51,3 @@ msgstr "Вы успешно внесли запись о фильме"
 
 msgid "You successfully updated this movie"
 msgstr "Вы успешно обновили запись об этом фильме"
-
-msgid "some string"
-msgstr ""
-
-msgid "this will get translated"
-msgstr ""
-
-msgid "text"
-msgstr ""
-
-msgid "Hello World!\n"
-msgstr ""
-
-msgid "Hello "
-msgstr ""
-
-msgid "Hello %1"
-msgstr ""
-
-msgid "This is the %1 %2"
-msgstr ""
-
-msgid "One file deleted.\n"
-msgid_plural "%d files deleted.\n"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "%d files deleted.\n"
-msgstr ""
-
-msgid "one banana"
-msgid_plural "%1 bananas"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "string"
-msgstr ""

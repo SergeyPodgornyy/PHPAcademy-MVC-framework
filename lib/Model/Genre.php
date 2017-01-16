@@ -11,6 +11,7 @@ class Genre implements ModelInterface
 
     const CONNECTION_NAME = 'framework';
     const TABLE_NAME = 'genres';
+    const TRANSLATION_TABLE_NAME = 'genre_translations';
 
     /**
      * Create connection
@@ -50,13 +51,27 @@ class Genre implements ModelInterface
 
         $connection = self::getConnection();
 
-        $where = isset($params['Type']) ? " WHERE type='$params[Type]' " : '';
+        $whereArray = [];
+
+        if (isset($params['Type'])) {
+            $whereArray[] = " type='$params[Type]' ";
+        }
+        if (isset($params['Locale'])) {
+            $whereArray[] = " locale='$params[Locale]' ";
+        }
+
         $limit = isset($params['Limit']) ? " LIMIT $params[Limit] " : '';
         $offset = isset($params['Offset']) ? " OFFSET $params[Offset] " : '';
         $order = isset($params['SortField']) && isset($params['SortOrder']) ?
             " ORDER BY $params[SortField] $params[SortOrder] " : '';
 
-        $query = "SELECT * FROM ".self::TABLE_NAME.$where.$order.$limit.$offset;
+        $query = "SELECT " . self::TABLE_NAME . ".*, " . self::TRANSLATION_TABLE_NAME . ".name as translated_name "
+            . " FROM " . self::TABLE_NAME
+            . " LEFT JOIN " . self::TRANSLATION_TABLE_NAME
+                . " ON " . self::TABLE_NAME . '.id = ' . self::TRANSLATION_TABLE_NAME . '.genre_id '
+            . ($whereArray ? ' WHERE ' . implode(' AND ', $whereArray) : '')
+            . " GROUP BY " . self::TRANSLATION_TABLE_NAME . '.genre_id '
+            . $order . $limit . $offset;
 
         $statement = $connection->prepare($query);
 
@@ -94,28 +109,42 @@ class Genre implements ModelInterface
 
         $connection = self::getConnection();
 
-        $whereName = isset($params['Search']) && $params['Search']
-            ? $params['Search']
-            : null;
-        $whereType = isset($params['Type']) && $params['Type']
-            ? $params['Type']
-            : null;
+        $whereArray = [];
+
+        if (isset($params['Search']) && $params['Search']) {
+            $whereArray[] = self::TABLE_NAME.'.name LIKE "%:name%" ';
+        }
+        if (isset($params['Type']) && $params['Type']) {
+            $whereArray[] = self::TABLE_NAME.'.type=:type ';
+        }
+        if (isset($params['Locale'])) {
+            $whereArray[] = " locale='$params[Locale]' ";
+        }
 
         $limit = isset($params['Limit']) ? " LIMIT $params[Limit] " : '';
         $offset = isset($params['Offset']) ? " OFFSET $params[Offset] " : '';
         $order = isset($params['SortField']) && isset($params['SortOrder']) ?
             " ORDER BY $params[SortField] $params[SortOrder] " : '';
 
-        $where = $whereName
-            ? ' WHERE '.self::TABLE_NAME.'.name LIKE "%:name%" '
-                . ($whereType ? " AND type='$type' " : '')
-            : '';
-
-        $query = "SELECT ".self::TABLE_NAME.".* FROM ".self::TABLE_NAME.$where.$order.$limit.$offset;
+        $query = "SELECT " . self::TABLE_NAME . ".*, " . self::TRANSLATION_TABLE_NAME . ".name as translated_name "
+            . " FROM " . self::TABLE_NAME
+            . " LEFT JOIN " . self::TRANSLATION_TABLE_NAME
+                . " ON " . self::TABLE_NAME . '.id = ' . self::TRANSLATION_TABLE_NAME . '.genre_id '
+            . ($whereArray ? ' WHERE ' . implode(' AND ', $whereArray) : '')
+            . " GROUP BY " . self::TRANSLATION_TABLE_NAME . '.genre_id '
+            . $order . $limit . $offset;
 
         $statement = $connection->prepare($query);
 
-        $statement->bindValue(':name', $whereName, \PDO::PARAM_STR);
+        if (isset($params['Search']) && $params['Search']) {
+            $statement->bindValue(':name', $params['Search'], \PDO::PARAM_STR);
+        }
+        if (isset($params['Type']) && $params['Type']) {
+            $statement->bindValue(':type', $params['Type'], \PDO::PARAM_STR);
+        }
+        if (isset($params['Locale'])) {
+            $statement->bindValue(':locale', $params['Locale'], \PDO::PARAM_STR);
+        }
 
         $success = $statement->execute();
 

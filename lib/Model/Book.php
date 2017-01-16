@@ -362,14 +362,20 @@ class Book implements ModelInterface
 
         $id = isset($data['Id']) ? $data['Id'] : '';
 
+        $localeWhere = isset($data['Locale']) ? " AND gt.locale = '$data[Locale]' " : "";
+        $genreName = isset($data['Locale']) ? " gt.name as genre " : " g.name as genre ";
+
         $statement = $connection->prepare(
-            "SELECT ".self::TABLE_NAME.".*, g.name as genre, p.name as publisher
+            "SELECT ".self::TABLE_NAME.".*, $genreName, p.name as publisher
                 FROM ".self::TABLE_NAME."
             LEFT JOIN publishers AS p
                 ON ".self::TABLE_NAME.".publisher_id = p.id
             LEFT JOIN genres AS g
                 ON ".self::TABLE_NAME.".genre_id = g.id
-            WHERE ".self::TABLE_NAME.".id = :id"
+            LEFT JOIN genre_translations AS gt
+                ON gt.genre_id = g.id
+            WHERE ".self::TABLE_NAME.".id = :id $localeWhere
+            GROUP BY gt.genre_id"
         );
 
         $statement->bindValue(':id', $id);

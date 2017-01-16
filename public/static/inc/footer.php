@@ -15,6 +15,7 @@
     <script type="text/javascript" src="/static/js/Controller/Music.js"></script>
     <script type="text/javascript" src="/static/js/Gettext.js"></script>
     <script type="text/javascript" src="/static/js/lang/en.js"></script>
+    <script type="text/javascript" src="/static/js/lang/de.js"></script>
     <script type="text/javascript" src="/static/js/lang/ru.js"></script>
     <script type="text/javascript" src="/static/js/lang/ua.js"></script>
     <script type="text/javascript" src="/static/js/utils.js"></script>

@@ -2,12 +2,6 @@
 
 define('ROOT_PATH', dirname(__FILE__) . '/..');
 
-$locales = [
-    'en'  => 'en_US',
-    'ru'  => 'ru_RU',
-    'ua'  => 'ru_UA',
-];
-
 // update lib files
 Translator::createInstance(ROOT_PATH . '/lib', 'php')->update();
 Translator::createInstance(ROOT_PATH . '/public/static', 'php')->update();
@@ -15,13 +9,13 @@ Translator::createInstance(ROOT_PATH . '/public/static', 'php')->update();
 Translator::createInstance(ROOT_PATH . '/public/static', 'js')->update();
 Translator::createInstance(ROOT_PATH . '/client/src', 'js')->update();
 
-prepareJson($locales);
+prepareJson();
 removeComments();
 
-function prepareJson($locales) {
+function prepareJson() {
     $po2json = __DIR__ . "/po2json.pl";
 
-    foreach ($locales as $lang => $code) {
+    foreach (Translator::getLocales() as $lang => $code) {
         $jsFile     = ROOT_PATH . "/public/static/js/lang/${lang}.js";
         $poFile     = ROOT_PATH . "/locales/$code/LC_MESSAGES/library_js.po";
         $jsVariable = strtoupper("main_locale_$lang");
@@ -57,10 +51,11 @@ function removeComments() {
 
 class Translator
 {
-    private $locales = [
-        'en'  => 'en_US',
-        'ru'  => 'ru_RU',
-        'ua'  => 'ru_UA',
+    private static $locales = [
+        'en'    => 'en_GB',
+        'de'    => 'de_DE',
+        'ru'    => 'ru_RU',
+        'ua'    => 'ru_UA',
     ];
 
     private $path;
@@ -110,7 +105,7 @@ class Translator
     private function translate()
     {
         foreach ($this->entryPathes as $filePath) {
-            foreach ($this->locales as $locale) {
+            foreach (self::$locales as $locale) {
                 system($this->makeXgettextCmd($filePath, $locale));
             }
         }
@@ -140,5 +135,10 @@ class Translator
         }
 
         return $cmd;
+    }
+
+    public static function getLocales()
+    {
+        return self::$locales;
     }
 }
