@@ -55,6 +55,24 @@ To fix your code according to PSR standards, run the following script
 
 ### Update languages pack
 
+**Run script**
+
+```bash
+    php bin/updateLangFiles.php
+```
+
+Provide translation for `.po` files located in `/locales` using `poedit` (just type `poeditor` in console to run it). `poeditor` will generate `.mo` files. After that, run script one more time to create `.json` files.
+
+If you don't want to use `poeditor`, you can generate `.mo` files using the following script:
+
+```bash
+    msgfmt messages.po -o messages.mo
+```
+
+********************************************************************************
+
+#### Install locales and important libraries
+
 First of all, you need to install the following packages:
 
 ```bash
@@ -82,29 +100,8 @@ Update system locales:
     sudo dpkg-reconfigure locales
 ```
 
-**Run script**
-
-```bash
-    php bin/updateLangFiles.php
-```
-
 Install `poedit` on your machine:
 
 ```bash
     sudo apt-get install poedit
 ```
-
-Provide translation for `.po` files located in `/locales` using `poedit` (just type `poeditor` in console to run it). `poeditor` will generate `.mo` files. After that, run script one more time to create `.json` files.
-
-If you don't want to use `poeditor`, you can generate `.mo` files using the folowwing script:
-
-```bash
-    msgfmt messages.po -o messages.mo
-```
-
-Before pushing your `.po` files to remote repository, be sure, that their is no unuseful comments or logs. Open `.po` files and **remove logs** if they exists. Easiest way to do this is:
-
-- Open Sublime Text, or other code editor
-- Select and copy path of your project folder in logs
-- Find all entries and choose them all using `Alt+Enter`
-- Delete all selected rows using `Ctrl+Shift+K`

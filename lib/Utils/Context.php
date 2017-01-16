@@ -17,7 +17,8 @@ class Context
 
     private static $localesFolder = __DIR__ . '/../../locales';
 
-    public static function getLang() {
+    public static function getLang()
+    {
         return self::$lang;
     }
 
@@ -26,7 +27,8 @@ class Context
         return isset(self::$locales[$lang]) ? self::$locales[$lang] : null;
     }
 
-    public static function setLang($lang) {
+    public static function setLang($lang)
+    {
         $locale = self::getLocaleFromLang($lang);
 
         if (!$locale) {

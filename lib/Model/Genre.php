@@ -54,10 +54,10 @@ class Genre implements ModelInterface
         $whereArray = [];
 
         if (isset($params['Type'])) {
-            $whereArray[] = " type='$params[Type]' ";
+            $whereArray[] = " type=:type ";
         }
         if (isset($params['Locale'])) {
-            $whereArray[] = " locale='$params[Locale]' ";
+            $whereArray[] = " locale=:locale ";
         }
 
         $limit = isset($params['Limit']) ? " LIMIT $params[Limit] " : '';
@@ -74,6 +74,13 @@ class Genre implements ModelInterface
             . $order . $limit . $offset;
 
         $statement = $connection->prepare($query);
+
+        if (isset($params['Type'])) {
+            $statement->bindValue(':type', $params['Type'], \PDO::PARAM_STR);
+        }
+        if (isset($params['Locale'])) {
+            $statement->bindValue(':locale', $params['Locale'], \PDO::PARAM_STR);
+        }
 
         $success = $statement->execute();
 
@@ -118,7 +125,7 @@ class Genre implements ModelInterface
             $whereArray[] = self::TABLE_NAME.'.type=:type ';
         }
         if (isset($params['Locale'])) {
-            $whereArray[] = " locale='$params[Locale]' ";
+            $whereArray[] = " locale=:locale ";
         }
 
         $limit = isset($params['Limit']) ? " LIMIT $params[Limit] " : '';
