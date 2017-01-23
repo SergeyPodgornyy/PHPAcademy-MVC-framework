@@ -22,14 +22,14 @@ class AppFactory
         // Define routes
         $dashboard = new \Controller\Dashboard($app);
         $app->get('/', [$dashboard, 'getIndex']);
-        $app->get('/login', function() use ($app) {
+        $app->get('/login', function () use ($app) {
             $app->render('login.php', ['title' => gettext('Login')]);
         });
-        $app->get('/register', function() use ($app) {
+        $app->get('/register', function () use ($app) {
             $app->render('register.php', ['title' => gettext('Register')]);
         });
         // TODO: edit another users for admins
-        $app->get('/user/:id/edit', $isAuth, function($id) use ($app) {
+        $app->get('/user/:id/edit', $isAuth, function ($id) use ($app) {
             $app->render('user.edit.php', ['title' => gettext('Edit user data'), 'userId' => $id]);
         });
 

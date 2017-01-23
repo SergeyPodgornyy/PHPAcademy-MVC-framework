@@ -27,6 +27,8 @@ To start this app, perform the following steps:
     php deploy/setup.php -fd
 ```
 
+After migration 3 test account will be available. Account with role `user` get see website content, `admin` also can delete items, and `superadmin` can also create and modify existing items. All test accounts has `password` as a password.
+
  - Then start a server
 
 ```bash
