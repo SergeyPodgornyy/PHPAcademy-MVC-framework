@@ -355,14 +355,20 @@ class Movie implements ModelInterface
 
         $id = isset($data['Id']) ? $data['Id'] : '';
 
+        $localeWhere = isset($data['Locale']) ? " AND gt.locale = '$data[Locale]' " : "";
+        $genreName = isset($data['Locale']) ? " gt.name as genre " : " g.name as genre ";
+
         $statement = $connection->prepare(
-            "SELECT ".self::TABLE_NAME.".*, g.name as genre, CONCAT(d.name, ' ', d.surname) as director
+            "SELECT ".self::TABLE_NAME.".*, $genreName, CONCAT(d.name, ' ', d.surname) as director
                 FROM ".self::TABLE_NAME."
             LEFT JOIN directors AS d
                 ON ".self::TABLE_NAME.".director_id = d.id
             LEFT JOIN genres AS g
                 ON ".self::TABLE_NAME.".genre_id = g.id
-            WHERE ".self::TABLE_NAME.".id = :id"
+            LEFT JOIN genre_translations AS gt
+                ON gt.genre_id = g.id
+            WHERE ".self::TABLE_NAME.".id = :id $localeWhere
+            GROUP BY gt.genre_id"
         );
 
         $statement->bindValue(':id', $id);

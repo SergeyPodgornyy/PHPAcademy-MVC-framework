@@ -29,6 +29,7 @@ class Index extends Base
         $params += [
             'SortField' => 'id',
             'SortOrder' => 'asc',
+            'Locale'    => $this->locale(),
         ];
 
         $type = isset($params['Type']) ? $params['Type'] : null;

@@ -45,6 +45,21 @@ CREATE TABLE IF NOT EXISTS `genres` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Table structure for table `genre_translations`
+--
+
+CREATE TABLE IF NOT EXISTS `genre_translations` (
+  `id`        int(32)                               NOT NULL  AUTO_INCREMENT,
+  `genre_id`  int(10)                               NOT NULL,
+  `locale`    varchar(5)    COLLATE utf8_unicode_ci NOT NULL,
+  `name`      varchar(255)  COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `genre_locale_name` (`genre_id`, `locale`),
+  KEY `genre_translations_locale_index` (`locale`),
+  CONSTRAINT `genre_translations_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
 -- Table structure for table `movies`
 --
 

@@ -10,6 +10,7 @@ final class Language extends Base
 {
     private $availableLangs = [
         'en',
+        'de',
         'ru',
         'ua',
     ];
@@ -25,7 +26,7 @@ final class Language extends Base
             Context::setLang($lang);
             $result = [
                 'Status'    => 1,
-                'Message'   => gettext('Language successfully changed'),
+                'Message'   => gettext('Language has been successfully changed'),
             ];
         } catch (X $e) {
             $result = $e->getError();

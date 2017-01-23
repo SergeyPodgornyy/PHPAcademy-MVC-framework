@@ -19,7 +19,7 @@ class MessageCode
         $this->messagesList = [
             'UnknownErrorOccurred'              => gettext('Unknown Error Occurred. Please contact administrator'),
             'ErrorOccurredContactAdministrator' => gettext('Some Error Occurred. Please contact administrator'),
-            'WrongLanguage'                     => gettext('Wrong language defined'),
+            'WrongLanguage'                     => gettext('Wrong language has been defined'),
         ];
     }
 

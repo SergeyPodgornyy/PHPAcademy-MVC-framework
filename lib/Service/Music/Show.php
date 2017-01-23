@@ -20,7 +20,7 @@ class Show extends Base
 
     public function execute(array $params)
     {
-        $music = Music::selectOne(['Id' => $params['Id']]);
+        $music = Music::selectOne(['Id' => $params['Id'], 'Locale' => $this->locale()]);
 
         if (!$music) {
             throw new X([

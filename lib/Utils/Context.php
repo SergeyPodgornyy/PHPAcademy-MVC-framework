@@ -9,19 +9,27 @@ class Context
     private static $lang;
 
     private static $locales = [
-        'en'    => 'en_US',
+        'en'    => 'en_GB',
+        'de'    => 'de_DE',
         'ru'    => 'ru_RU',
         'ua'    => 'ru_UA',
     ];
 
     private static $localesFolder = __DIR__ . '/../../locales';
 
-    public static function getLang() {
+    public static function getLang()
+    {
         return self::$lang;
     }
 
-    public static function setLang($lang) {
-        $locale = isset(self::$locales[$lang]) ? self::$locales[$lang] : null;
+    public static function getLocaleFromLang($lang)
+    {
+        return isset(self::$locales[$lang]) ? self::$locales[$lang] : null;
+    }
+
+    public static function setLang($lang)
+    {
+        $locale = self::getLocaleFromLang($lang);
 
         if (!$locale) {
             $errorMsg = new MessageCode('WrongLanguage');
@@ -30,7 +38,7 @@ class Context
 
         // Set language
         putenv("LC_ALL=$locale.UTF-8");
-        putenv("LANGUAGE=$locale");
+        putenv("LANGUAGE=$locale");             // Need for Ubuntu distribution
         setlocale(LC_ALL, "$locale.UTF-8");
 
         // Specify the location of the translation tables

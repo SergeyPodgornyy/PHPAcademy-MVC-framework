@@ -20,7 +20,7 @@ class Show extends Base
 
     public function execute(array $params)
     {
-        $book = Book::selectOne(['Id' => $params['Id']]);
+        $book = Book::selectOne(['Id' => $params['Id'], 'Locale' => $this->locale()]);
 
         if (!$book) {
             throw new X([

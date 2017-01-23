@@ -54,7 +54,6 @@ class Cache
     protected function getBackend()
     {
         if (self::$cacheBackend === null) {
-
             $conf = include __DIR__ . '/../../etc/app-conf.php';
             $cacheConfig = $conf['cacheConfig'];
 

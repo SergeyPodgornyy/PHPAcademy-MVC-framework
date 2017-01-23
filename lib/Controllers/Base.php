@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Framework\App;
+use Utils\Context;
 
 class Base
 {
@@ -63,6 +64,16 @@ class Base
         return isset($_SESSION['UserId']) ? $_SESSION['UserId'] : null;
     }
 
+    public function getLang()
+    {
+        return isset($_SESSION['Lang']) ? $_SESSION['Lang'] : null;
+    }
+
+    public function getLocale()
+    {
+        return Context::getLocaleFromLang($this->getLang());
+    }
+
     /**
      * mix run( function $cb, bool $isSkipSuccessRender ) - action wrapper
      * @param callable      $cb
@@ -99,8 +110,9 @@ class Base
     public function action($class)
     {
         return new $class([
-            'UserId' => $this->getUserId(),
-            'config' => $this->config(),
+            'UserId'    => $this->getUserId(),
+            'locale'    => $this->getLocale(),
+            'config'    => $this->config(),
         ]);
     }
 }

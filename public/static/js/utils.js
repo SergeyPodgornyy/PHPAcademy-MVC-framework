@@ -32,8 +32,8 @@ function initGettext() {
     if (!Object.keys(locale['library_js']).length) return false;
 
     var params = {
-        "domain" : domain,
-        "locale_data" : locale
+        domain : domain,
+        locale_data : locale
     };
     var gt = new Gettext(params);
 
@@ -45,6 +45,8 @@ function getGettextLocaleVar(lang) {
     switch(lang) {
         case 'en':
             return MAIN_LOCALE_EN;
+        case 'de':
+            return MAIN_LOCALE_DE;
         case 'ru':
             return MAIN_LOCALE_RU;
         case 'ua':

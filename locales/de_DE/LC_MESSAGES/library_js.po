@@ -18,37 +18,37 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Well done!"
-msgstr "Чудово!"
+msgstr "Gut gemacht!"
 
 msgid "Oh snap!"
-msgstr "Дідько!"
+msgstr "Oh Verschluss!"
 
 msgid "Change a few things up and try submitting again"
-msgstr "Змініть дещо і спробуйте відправити ще раз"
-
-msgid "You successfully inserted book"
-msgstr "Ви успішно додали книгу"
-
-msgid "You successfully updated this book"
-msgstr "Ви успішно оновили цю книгу"
-
-msgid "You successfully deleted this book"
-msgstr "Ви успішно видалили цю книгу"
-
-msgid "You successfully inserted music item"
-msgstr "Ви успішно додали музичний твір"
-
-msgid "You successfully updated this music item"
-msgstr "Ви успішно оновили цей музичний твір"
-
-msgid "You successfully deleted this music item"
-msgstr "Ви успішно видалили цей музичний твір"
+msgstr "Ändern Sie ein paar Dinge und versuchen Sie erneut einreichen"
 
 msgid "You successfully inserted movie"
-msgstr "Ви успішно додали новий фільм"
+msgstr "Sie haben ein neuen Film erfolgreich eingefügt"
 
 msgid "You successfully updated this movie"
-msgstr "Ви успішно оновили цей фільм"
+msgstr "Sie haben diesen Film erfolgreich aktualisiert"
 
 msgid "You successfully deleted this movie"
-msgstr "Ви успішно видалили цей фільм"
+msgstr "Sie haben diesen Film erfolgreich gelöscht"
+
+msgid "You successfully inserted book"
+msgstr "Sie haben erfolgreich ein neues Buch eingefügt"
+
+msgid "You successfully updated this book"
+msgstr "Sie haben dieses Buch erfolgreich aktualisiert"
+
+msgid "You successfully deleted this book"
+msgstr "Sie haben dieses Buch erfolgreich gelöscht"
+
+msgid "You successfully inserted music item"
+msgstr "Sie haben ein neues Musikstück erfolgreich eingefügt"
+
+msgid "You successfully updated this music item"
+msgstr "Sie haben dieses Musikstück erfolgreich aktualisiert"
+
+msgid "You successfully deleted this music item"
+msgstr "Sie haben dieses Musikstück erfolgreich gelöscht"

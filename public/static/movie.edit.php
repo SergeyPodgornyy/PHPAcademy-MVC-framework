@@ -60,7 +60,7 @@ include("inc/header.php");
                                     <?= isset($item['genre_id']) && $item['genre_id'] == $genre['id']
                                         ? "selected"
                                         : ""; ?>>
-                                    <?= $genre['name'] ?>
+                                    <?= isLangSet() && $genre['translated_name'] ? $genre['translated_name'] : $genre['name'] ?>
                                 </option>
                             <?php endforeach ?>
                         </select>

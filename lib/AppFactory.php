@@ -54,14 +54,6 @@ class AppFactory
         $app->get('/music/:id', [$music, 'getShow']);
         $app->get('/music/:id/edit', [$music, 'getEdit']);
 
-        // Test routes
-        $app->get('/welcome/', function () use ($app) {
-            $app->render('test.php');
-        });
-        $app->get('/welcome/:user', function ($name) use ($app) {
-            $app->render('test.php', ['name' => $name]);
-        });
-
         // Define API routes
         $app->get('/api/movies/', $isAuth, [$movie, 'index']);
         $app->get('/api/movies/:id', $isAuth, [$movie, 'show']);
