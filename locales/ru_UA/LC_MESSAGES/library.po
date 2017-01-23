@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 14:32+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2017-01-23 20:39+0200\n"
+"PO-Revision-Date: 2017-01-23 21:03+0300\n"
 "Last-Translator: Sergey Podgornyy <sergey.podgornyy@yahoo.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
 msgid "Language has been successfully changed"
 msgstr "Мова успішно змінена"
@@ -141,3 +141,57 @@ msgstr "Головна"
 
 msgid "Insert new movie"
 msgstr "Додати новий фільм"
+
+msgid "Login"
+msgstr "Увійти"
+
+msgid "Register"
+msgstr "Зареєструватися"
+
+msgid "Edit user data"
+msgstr "Редагування дані користувача"
+
+msgid "You can update personal data"
+msgstr "Ви можете оновити особисті дані"
+
+msgid "Name"
+msgstr "Ім'я"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Repeat Password"
+msgstr "Повторити пароль"
+
+msgid "Update data"
+msgstr "Оновлювати дані"
+
+msgid "Register new user"
+msgstr "Зареєструвати нового користувача"
+
+msgid "If you already have an account, you can sign in here"
+msgstr "Якщо у вас вже є аккаунт, ви можете увійти тут"
+
+msgid "You need to login"
+msgstr "Вам необхідно увійти в систему"
+
+msgid "Log In"
+msgstr "Увійти"
+
+msgid "Not registered yet? You can register now for FREE"
+msgstr "Ще не зареєстровані? Ви можете зареєструватися прямо зараз безкоштовно"
+
+msgid "Hello"
+msgstr "Привіт"
+
+msgid "Edit personal data"
+msgstr "Редагувати особисті дані"
+
+msgid "Log Out"
+msgstr "Вийти"
+
+msgid "To see library's content, you need to be logged in"
+msgstr "Щоб побачити вміст бібліотеки, вам необхідно увійти в систему"

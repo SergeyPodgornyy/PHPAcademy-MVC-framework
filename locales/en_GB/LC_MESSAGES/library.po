@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 14:32+0200\n"
+"POT-Creation-Date: 2017-01-23 20:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Sergey Podgornyy <sergey.podgornyy@yahoo.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -140,4 +140,58 @@ msgid "Home"
 msgstr ""
 
 msgid "Insert new movie"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Register"
+msgstr ""
+
+msgid "Edit user data"
+msgstr ""
+
+msgid "You can update personal data"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Repeat Password"
+msgstr ""
+
+msgid "Update data"
+msgstr ""
+
+msgid "Register new user"
+msgstr ""
+
+msgid "If you already have an account, you can sign in here"
+msgstr ""
+
+msgid "You need to login"
+msgstr ""
+
+msgid "Log In"
+msgstr ""
+
+msgid "Not registered yet? You can register now for FREE"
+msgstr ""
+
+msgid "Hello"
+msgstr ""
+
+msgid "Edit personal data"
+msgstr ""
+
+msgid "Log Out"
+msgstr ""
+
+msgid "To see library's content, you need to be logged in"
 msgstr ""

@@ -48,7 +48,7 @@ function Dashboard() {
                         + '    <strong>' + gettext('Oh snap!') + '</strong> '
                         + (res.Error.Message.length
                             ? res.Error.Message
-                            : gettext('Something went wrong. Check your email and password and try submitting again.')
+                            : gettext('Something went wrong. Check your email and password and try submitting again')
                         )
                         + '</div>';
                     $('#content .wrapper').prepend(errorBlock);
@@ -70,7 +70,7 @@ function Dashboard() {
                     + '    <strong>' + gettext('Oh snap!') + '</strong> '
                     + (res.Error.Message.length
                         ? res.Error.Message
-                        : gettext('Something went wrong. Check your email and password and try submitting again.')
+                        : gettext('Something went wrong. Check your email and password and try submitting again')
                     )
                     + '</div>';
                 $('#content .wrapper').prepend(errorBlock);

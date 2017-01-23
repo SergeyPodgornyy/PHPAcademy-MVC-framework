@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 13:11+0200\n"
+"POT-Creation-Date: 2017-01-23 20:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Sergey Podgornyy <sergey.podgornyy@yahoo.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,3 +52,9 @@ msgstr "Sie haben dieses Musikstück erfolgreich aktualisiert"
 
 msgid "You successfully deleted this music item"
 msgstr "Sie haben dieses Musikstück erfolgreich gelöscht"
+
+msgid "Something went wrong. Check your email and password and try submitting again"
+msgstr "Etwas ist schief gelaufen. Überprüfen Sie Ihre E-Mail-Adresse und Ihr Passwort, dann versuchen Sie es erneut"
+
+msgid "You successfully updated your personal data"
+msgstr "Sie haben Ihre persönlichen Daten erfolgreich aktualisiert"

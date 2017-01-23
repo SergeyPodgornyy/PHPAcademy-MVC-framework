@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 14:32+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2017-01-23 20:39+0200\n"
+"PO-Revision-Date: 2017-01-23 20:58+0300\n"
 "Last-Translator: Sergey Podgornyy <sergey.podgornyy@yahoo.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
 msgid "Language has been successfully changed"
 msgstr "Язык успешно изменен"
@@ -141,3 +141,57 @@ msgstr "Главная страница"
 
 msgid "Insert new movie"
 msgstr "Добавление нового фильма"
+
+msgid "Login"
+msgstr "Авторизироваться"
+
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+msgid "Edit user data"
+msgstr "Редактировать пользовательские данные"
+
+msgid "You can update personal data"
+msgstr "Вы можете обновить Ваши персональные данные"
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Repeat Password"
+msgstr "Повторите пароль"
+
+msgid "Update data"
+msgstr "Обновить данные"
+
+msgid "Register new user"
+msgstr "Зарегистрировать нового пользователя"
+
+msgid "If you already have an account, you can sign in here"
+msgstr "Если у Вас уже есть аккаунт, Вы можете авторизироваться здесь"
+
+msgid "You need to login"
+msgstr "Вам необходимо авторизироваться"
+
+msgid "Log In"
+msgstr "Авторизироваться"
+
+msgid "Not registered yet? You can register now for FREE"
+msgstr "Еще не зарегистрированы? Вы можете зарегистрироваться сейчас бесплатно"
+
+msgid "Hello"
+msgstr "Привет"
+
+msgid "Edit personal data"
+msgstr "Редактировать персональные данные"
+
+msgid "Log Out"
+msgstr "Выйти"
+
+msgid "To see library's content, you need to be logged in"
+msgstr "Для отображения контента сайта, Вы должны быть авторизированны"

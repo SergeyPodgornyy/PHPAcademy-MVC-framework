@@ -68,7 +68,7 @@ include("inc/header.php");
                     <?php // TODO: Implement CSRF token protection ?>
                     <input type="submit" value="<?= gettext('Register') ?>">
                     <p class="text-center">
-                        <a href="/login"><?= gettext('If you already have an account, you can sign in here.') ?></a>
+                        <a href="/login"><?= gettext('If you already have an account, you can sign in here') ?></a>
                     </p>
                 </form>
             </div>

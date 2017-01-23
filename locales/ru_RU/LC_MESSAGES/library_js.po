@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-14 08:09+0200\n"
+"POT-Creation-Date: 2017-01-23 20:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Sergey Podgornyy <sergey.podgornyy@yahoo.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,3 +52,9 @@ msgstr "Вы успешно внесли запись о фильме"
 
 msgid "You successfully updated this movie"
 msgstr "Вы успешно обновили запись об этом фильме"
+
+msgid "Something went wrong. Check your email and password and try submitting again"
+msgstr "Что-то пошло не так. Проверьте вашу электронную почту и пароль, и попробуйте отправить еще раз"
+
+msgid "You successfully updated your personal data"
+msgstr "Вы успешно обновили свои персональные данные"
