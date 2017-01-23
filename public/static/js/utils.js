@@ -32,8 +32,8 @@ function initGettext() {
     if (!Object.keys(locale['library_js']).length) return false;
 
     var params = {
-        "domain" : "library_js",
-        "locale_data" : getGettextLocaleVar(getCookie('LANG'))
+        "domain" : domain,
+        "locale_data" : locale
     };
     var gt = new Gettext(params);
 

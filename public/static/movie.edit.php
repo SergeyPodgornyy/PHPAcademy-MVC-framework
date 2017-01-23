@@ -1,5 +1,11 @@
 <?php
 
+require_once __DIR__ . '/inc/helpers.php';
+
+if (!isSuperAdmin()) {
+    header('Location: /movies');
+}
+
 $pageTitle = gettext("Personal Media Library");
 $pageTitle .= isset($title) ? ' | ' . $title : '';
 

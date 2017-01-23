@@ -19,17 +19,42 @@
                 <button data-value='en' class="btn btn-default">EN</button>
                 <button data-value='ru' class="btn btn-default">RU</button>
             </span>
-            <ul class="nav">
-                <li class="books <?= ($section=='books') ? 'on' : ''; ?>">
-                    <a href="/books"><?= gettext("Books") ?></a>
-                </li>
-                <li class="movies <?= ($section=='movies') ? 'on' : ''; ?>">
-                    <a href="/movies"><?= gettext("Movies") ?></a>
-                </li>
-                <li class="music <?= ($section=='music') ? 'on' : ''; ?>">
-                    <a href="/music"><?= gettext("Music") ?></a>
-                </li>
-            </ul>
+            <?php if (isLogedIn()) : ?>
+                <ul class="nav">
+                    <li class="books <?= ($section=='books') ? 'on' : ''; ?>">
+                        <a href="/books"><?= gettext("Books") ?></a>
+                    </li>
+                    <li class="movies <?= ($section=='movies') ? 'on' : ''; ?>">
+                        <a href="/movies"><?= gettext("Movies") ?></a>
+                    </li>
+                    <li class="music <?= ($section=='music') ? 'on' : ''; ?>">
+                        <a href="/music"><?= gettext("Music") ?></a>
+                    </li>
+                </ul>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="options-block">
+        <div class="wrapper">
+            <?php if (isLogedIn()) : ?>
+                <span class="user">
+                    <?= gettext("Hello") ?>, <?= $_SESSION['UserName'] ?: $_SESSION['UserEmail'] ?>
+                </span>
+                <span class="pull-right">
+                    <a href="/user/<?= $_SESSION['UserId'] ?>/edit" role="button" class="btn btn-default btn-sm">
+                        <?= gettext("Edit personal data") ?>
+                        <span class="fa fa-user-circle fa-fw"></span>
+                    </a>
+                    <button class="btn btn-default btn-sm" id='logout'>
+                        <?= gettext("Log Out") ?>
+                        <span class="fa fa-sign-out fa-fw"></span>
+                    </button>
+                </span>
+            <?php else: ?>
+                <span class="hint">
+                    <?= gettext('To see library\'s content, you need to be logged in') ?>
+                </span>
+            <?php endif; ?>
         </div>
     </div>
     <div id="content" data-page="<?= $page; ?>" data-action="<?= $action ?>">

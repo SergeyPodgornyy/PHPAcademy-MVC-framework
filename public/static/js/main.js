@@ -11,6 +11,9 @@ $(document).ready(function() {
         case 'music':
             var templateCtrl = new Music();
             break;
+        case 'user':
+            var templateCtrl = new User();
+            break;
         default:
             var templateCtrl = new Dashboard();
             break;
@@ -28,6 +31,14 @@ $(document).ready(function() {
             break;
         case 'update':
             templateCtrl.update();
+            break;
+        case 'login':
+            templateCtrl = new Dashboard();
+            templateCtrl.login();
+            break;
+        case 'register':
+            templateCtrl = new Dashboard();
+            templateCtrl.register();
             break;
         default:
             templateCtrl.init();
@@ -47,6 +58,16 @@ $(document).ready(function() {
             } else {
                 $('.lang button').removeClass('disabled').attr('disabled', false);
                 console.log(res.Message);
+            }
+        });
+    });
+
+    $('#logout').on('click', function(e) {
+        e.preventDefault();
+
+        $.deleteJSON('/api/session', [], function(res) {
+            if (res.Status == 1) {
+                window.location.href = '/login';
             }
         });
     });

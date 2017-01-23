@@ -1,5 +1,11 @@
 <?php
 
+require_once __DIR__ . '/inc/helpers.php';
+
+if (!isLogedIn()) {
+    header('Location: /login');
+}
+
 $pageTitle = gettext("Personal Media Library");
 $pageTitle .= isset($title) ? ' | ' . $title : '';
 

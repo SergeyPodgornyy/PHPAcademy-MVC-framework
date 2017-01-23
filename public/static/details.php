@@ -1,5 +1,11 @@
 <?php
 
+require_once __DIR__ . '/inc/helpers.php';
+
+if (!isLogedIn()) {
+    header('Location: /login');
+}
+
 $pageTitle = gettext("Personal Media Library");
 $pageTitle .= isset($title) ? ' | ' . $title : '';
 
@@ -24,16 +30,20 @@ include("inc/header.php");
     <div class="wrapper">
         <?php // TODO: Add breadcrumbs ?>
         <div class="pull-right">
-            <a href="<?= '/' . $page . '/' . $item['id'] . '/edit' ?>" type="button" class="btn btn-warning">
-                <span class="fa fa-pencil"></span> <?= gettext('Edit data') ?>
-            </a>
-            <button type="button"
-                    class="btn btn-danger"
-                    id="delete-item"
-                    data-id="<?= $item['id'] ?>"
-                    style="width: 150px">
-                <span class="fa fa-trash-o fa-fw"></span> <?= gettext('Delete item') ?>
-            </button>
+            <?php if (isSuperAdmin()) : ?>
+                <a href="<?= '/' . $page . '/' . $item['id'] . '/edit' ?>" type="button" class="btn btn-warning">
+                    <span class="fa fa-pencil"></span> <?= gettext('Edit data') ?>
+                </a>
+            <?php endif; ?>
+            <?php if (isAdmin() || isSuperAdmin()) : ?>
+                <button type="button"
+                        class="btn btn-danger"
+                        id="delete-item"
+                        data-id="<?= $item['id'] ?>"
+                        style="width: 150px">
+                    <span class="fa fa-trash-o fa-fw"></span> <?= gettext('Delete item') ?>
+                </button>
+            <?php endif; ?>
         </div>
         <div class="clear-fix"></div>
         <div class="media-picture">

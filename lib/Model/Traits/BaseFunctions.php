@@ -49,28 +49,6 @@ trait BaseFunctions
         return $row;
     }
 
-
-    public static function findByContactId($id)
-    {
-        $connection = static::getConnection();
-
-        $statement = $connection->prepare(
-            " SELECT * FROM ".static::TABLE_NAME.
-            " WHERE contact_id = :id"
-        );
-
-        $statement->bindValue(':id', $id);
-
-        $statement->execute();
-
-        $result = [];
-        while ($row = $statement->fetch()) {
-            $result[] = $row;
-        }
-
-        return $result;
-    }
-
     private static function buildWhere($conditions = array(), $logicOperation = 'AND')
     {
         $where = '';

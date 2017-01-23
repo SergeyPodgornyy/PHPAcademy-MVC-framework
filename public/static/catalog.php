@@ -1,5 +1,11 @@
 <?php
 
+require_once __DIR__ . '/inc/helpers.php';
+
+if (!isLogedIn()) {
+    header('Location: /login');
+}
+
 $pageTitle = gettext("Personal Media Library");
 $pageTitle .= isset($title) ? ' | ' . $title : '';
 
@@ -19,11 +25,13 @@ include("inc/header.php");
 <div class="section catalog page">
     <div class="wrapper">
         <?php // TODO: Add breadcrumbs ?>
-        <div class="pull-right">
-            <a href="<?= '/' . $page . '/create' ?>" type="button" class="btn btn-success">
-                <span class="fa fa-plus fa-fw"></span> <?= gettext('Insert new item') ?>
-            </a>
-        </div>
+        <?php if (isSuperAdmin()) : ?>
+            <div class="pull-right">
+                <a href="<?= '/' . $page . '/create' ?>" type="button" class="btn btn-success">
+                    <span class="fa fa-plus fa-fw"></span> <?= gettext('Insert new item') ?>
+                </a>
+            </div>
+        <?php endif; ?>
         <ul class="catalog">
             <?php foreach ($items as $item) : ?>
                 <li>

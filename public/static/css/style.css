@@ -539,6 +539,11 @@ body {font-family: 'Open Sans', sans-serif; background:#f0eeed; color: #676767;}
 .header .nav li.movies a {background-position: 13px -105px;}
 .header .nav li.music a {background-position: 15px -235px;}
 .header .nav li.suggest a {background-position: 35px -340px;}
+.options-block {height: 38px; padding: 2px}
+.options-block span {font-size: 16px; display: inline-block;}
+.options-block span.user {padding: 6px;}
+.options-block span.hint {text-align: center; padding: 6px; width: 100%;}
+.options-block button, .options-block a {font-size: 14px;}
 #content {min-height: 400px; background: white;}
 .section.page:after {content:"";display:block;visibility:hidden;height:0;clear:both;}
 .section.page {padding: 34px 0; background: white;}

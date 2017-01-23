@@ -27,6 +27,9 @@ return [
         'memcachedHost' => 'localhost',
         'memcachedPort' => 11211,
     ],
+    'refererWhitelist'  => [
+        'localhost' => ['LIBRARY-PORTAL', 'LIBRARY-ADMIN-PORTAL'],
+    ],
     'headerAccessToken' => [
         'name'      => 'FRAMEWORK-TOKEN',
         'values'    => [
