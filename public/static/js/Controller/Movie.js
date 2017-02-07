@@ -4,39 +4,24 @@ function Movie() {
     }
 
     this.show = function() {
+        var self = this;
+
         $('#delete-item').on('click', function(e) {
             e.preventDefault();
             var itemId = $(e.target).data('id');
             $(e.target).attr('disabled', true);
 
-            // TODO: ask confiramtion before deleting
+            $("#delete-modal").modal('show');
 
-            $.deleteJSON('/api/movies/' + itemId, [], function(res) {
-                if (res.Status == 1) {
-                    var successBlock = ''
-                        + '<div class="alert alert-success alert-dismissible" role="alert">'
-                        + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
-                        + '        <span aria-hidden="true">&times;</span>'
-                        + '    </button>'
-                        + '    <strong>' + gettext('Well done!') + '</strong> '
-                        +      gettext('You successfully deleted this movie')
-                        + '</div>';
-                    $('#content .wrapper').prepend(successBlock);
-                    setTimeout(function () {
-                        window.location.href = '/movies';
-                    }, 2000);
-                } else {
-                    $(e.target).attr('disabled', false);
-                    var errorBlock = ''
-                        + '<div class="alert alert-danger alert-dismissible" role="alert">'
-                        + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
-                        + '        <span aria-hidden="true">&times;</span>'
-                        + '    </button>'
-                        + '    <strong>' + gettext('Oh snap!') + '</strong> '
-                        +      gettext('Change a few things up and try submitting again')
-                        + '</div>';
-                    $('#content .wrapper').prepend(errorBlock);
-                }
+            $('#delete-modal').find('button.delete-btn').off('click').on('click', function (ev) {
+                ev.preventDefault();
+                self._delete(itemId);
+            });
+
+            $('#delete-modal').find('button.close-btn').off('click').on('click', function (ev) {
+                ev.preventDefault();
+                $(e.target).attr('disabled', false);
+                $("#delete-modal").modal('hide');
             });
         });
     }
@@ -141,6 +126,38 @@ function Movie() {
                     $('#content .wrapper').prepend(errorBlock);
                 }
             });
+        });
+    }
+
+    this._delete = function(itemId) {
+        $.deleteJSON('/api/movies/' + itemId, [], function(res) {
+            if (res.Status == 1) {
+                var successBlock = ''
+                    + '<div class="alert alert-success alert-dismissible" role="alert">'
+                    + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+                    + '        <span aria-hidden="true">&times;</span>'
+                    + '    </button>'
+                    + '    <strong>' + gettext('Well done!') + '</strong> '
+                    +      gettext('You successfully deleted this movie')
+                    + '</div>';
+                $('#content .wrapper').prepend(successBlock);
+                $("#delete-modal").modal('hide');
+                setTimeout(function () {
+                    window.location.href = '/movies';
+                }, 2000);
+            } else {
+                $(e.target).attr('disabled', false);
+                var errorBlock = ''
+                    + '<div class="alert alert-danger alert-dismissible" role="alert">'
+                    + '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+                    + '        <span aria-hidden="true">&times;</span>'
+                    + '    </button>'
+                    + '    <strong>' + gettext('Oh snap!') + '</strong> '
+                    +      gettext('Change a few things up and try submitting again')
+                    + '</div>';
+                $("#delete-modal").modal('hide');
+                $('#content .wrapper').prepend(errorBlock);
+            }
         });
     }
 }

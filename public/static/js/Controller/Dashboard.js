@@ -46,7 +46,7 @@ function Dashboard() {
                         + '        <span aria-hidden="true">&times;</span>'
                         + '    </button>'
                         + '    <strong>' + gettext('Oh snap!') + '</strong> '
-                        + (res.Error.Message.length
+                        + ((res.Error.Message && res.Error.Message.length)
                             ? res.Error.Message
                             : gettext('Something went wrong. Check your email and password and try submitting again')
                         )
@@ -68,7 +68,7 @@ function Dashboard() {
                     + '        <span aria-hidden="true">&times;</span>'
                     + '    </button>'
                     + '    <strong>' + gettext('Oh snap!') + '</strong> '
-                    + (res.Error.Message.length
+                    + ((res.Error.Message && res.Error.Message.length)
                         ? res.Error.Message
                         : gettext('Something went wrong. Check your email and password and try submitting again')
                     )

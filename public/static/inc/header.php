@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/static/vendor/components-font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/static/vendor/chosen/chosen.css">
     <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 
     <script type="text/javascript" src="/static/vendor/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/static/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -36,13 +36,13 @@
             </span>
             <?php if (isLogedIn()) : ?>
                 <ul class="nav">
-                    <li class="books <?= ($section=='books') ? 'on' : ''; ?>">
+                    <li class="books <?= $section == 'books' ? 'on' : '' ?>">
                         <a href="/books"><?= gettext("Books") ?></a>
                     </li>
-                    <li class="movies <?= ($section=='movies') ? 'on' : ''; ?>">
+                    <li class="movies <?= $section == 'movies' ? 'on' : '' ?>">
                         <a href="/movies"><?= gettext("Movies") ?></a>
                     </li>
-                    <li class="music <?= ($section=='music') ? 'on' : ''; ?>">
+                    <li class="music <?= $section == 'music' ? 'on' : '' ?>">
                         <a href="/music"><?= gettext("Music") ?></a>
                     </li>
                 </ul>

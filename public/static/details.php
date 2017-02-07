@@ -106,4 +106,27 @@ include("inc/header.php");
     </div>
 </div>
 
+<div class="modal fade in" id="delete-modal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="false" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                <h4 class="modal-title">
+                    </span> <?= gettext('Confirmation of item deletion') ?>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p><?= gettext('Are you sure you want to permanently delete this item?') ?></p>
+            </div>
+            <input type="hidden" name="_method" value="delete" />
+            <div class="modal-footer">
+                <button class="btn btn-danger delete-btn">
+                    <span class="fa fa-remove fa-fw"></span> <?= gettext('Delete') ?>
+                </button>
+                <button class="btn btn-default close-btn" data-dismiss="modal"><?= gettext('Close') ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php include("inc/footer.php"); ?>

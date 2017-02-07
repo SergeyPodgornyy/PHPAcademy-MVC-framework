@@ -195,3 +195,15 @@ msgstr ""
 
 msgid "To see library's content, you need to be logged in"
 msgstr ""
+
+msgid "Confirmation of item deletion"
+msgstr ""
+
+msgid "Are you sure you want to permanently delete this item?"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Close"
+msgstr ""

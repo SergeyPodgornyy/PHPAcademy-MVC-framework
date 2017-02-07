@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-23 20:39+0200\n"
-"PO-Revision-Date: 2017-01-23 20:58+0300\n"
+"PO-Revision-Date: 2017-02-07 19:01+0300\n"
 "Last-Translator: Sergey Podgornyy <sergey.podgornyy@yahoo.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -195,3 +195,15 @@ msgstr "Выйти"
 
 msgid "To see library's content, you need to be logged in"
 msgstr "Для отображения контента сайта, Вы должны быть авторизированны"
+
+msgid "Confirmation of item deletion"
+msgstr "Подтверждение удаления"
+
+msgid "Are you sure you want to permanently delete this item?"
+msgstr "Вы уверены, что хотите удалить эту запись?"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Close"
+msgstr "Закрыть"
